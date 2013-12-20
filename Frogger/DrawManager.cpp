@@ -47,7 +47,7 @@ void DrawManager::Draw(Sprite *p_sprite, int p_x, int p_y)
 	SDL_Rect dst = {p_x,p_y,p_sprite->m_width,p_sprite->m_height};
 	SDL_RenderCopy(m_renderer, p_sprite->m_texture, &src, &dst);
 }
-
+// test jag ville se om detta fungerar bara =)
 
 
 
