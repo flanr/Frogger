@@ -4,6 +4,9 @@
 #pragma comment (lib,"sdl2.lib")
 #pragma comment (lib,"sdl2main.lib")
 #include "DrawManager.h"
+#include "StateManager.h"
+#include "GameState.h"
+#include "MenuState.h"
 
 
 Engine::Engine()
@@ -42,9 +45,11 @@ bool Engine::Initialize()
 		return false;
 	}
 
-	if(mgr.m_current= nullptr)
+	if(mgr.m_current == nullptr)
 	{
-
+		mgr.Attach(new MenuState);
+		mgr.Attach(new GameState);
+		mgr.SetState("MenuState");
 	}
 
 	

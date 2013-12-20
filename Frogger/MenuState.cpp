@@ -11,6 +11,7 @@ MenuState::MenuState()
 bool MenuState::Enter()
 {
 	// MenuStateRunning = true:
+	std::cout << "menu state now running";
 	return false;
 }
 
