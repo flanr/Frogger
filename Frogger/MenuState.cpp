@@ -3,8 +3,9 @@
 #include "MenuState.h"
 #include <iostream>
 
-MenuState::MenuState()
+MenuState::MenuState(SDL_Renderer* renderer)
 {
+	this->renderer = renderer;
 	// bool MenuStateRunning = false;
 }
 
@@ -27,13 +28,14 @@ bool MenuState::Update(float p_deltatime)
 
 void MenuState::Draw()
 {
-
+	SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
+	SDL_RenderClear(renderer);
 }
 
 
 std::string MenuState::Next()
 {
-return "";
+return "GameState";
 }
 
 bool MenuState::IsType(const std::string &p_type)

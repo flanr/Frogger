@@ -3,6 +3,7 @@
 #pragma once
 #include "StateManager.h"
 class DrawManager;
+class SpriteManager;
 class Engine{
 public:
 	Engine();
@@ -30,6 +31,7 @@ private:
 	struct SDL_Window *m_window;
 
 	DrawManager *m_draw_manager;
+	SpriteManager *m_sprite_manager;
 	StateManager mgr;
 
 	bool m_running;

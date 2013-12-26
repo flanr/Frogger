@@ -48,7 +48,10 @@ void DrawManager::Draw(Sprite *p_sprite, int p_x, int p_y)
 	SDL_RenderCopy(m_renderer, p_sprite->m_texture, &src, &dst);
 }
 
-
+SDL_Renderer* DrawManager::GetRenderer()
+{
+	return m_renderer;
+}
 
 
 

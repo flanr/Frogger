@@ -13,6 +13,8 @@ GameState::GameState()
 bool GameState::Enter()
 {
 	// GameStateRunning = true:
+	
+	std::cout << "GameState now running";
 	return false;
 }
 
@@ -29,19 +31,18 @@ bool GameState::Update(float p_deltatime)
 
 void GameState::Draw()
 {
-
+	
 }
 
 
 std::string GameState::Next()
 {
-	return "";
+	return "MenuState";
 }
 
 bool GameState::IsType(const std::string &p_type)
 {
-	return false;
-	//return p_type.compare("GameState") == 0;
+	return p_type.compare("GameState") == 0;
 }
 
 

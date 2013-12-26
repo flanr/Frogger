@@ -1,10 +1,13 @@
 // Engine.cpp
 #include "Engine.h"
 #include <SDL.h>
+#include <thread>
+
 #pragma comment (lib,"sdl2.lib")
 #pragma comment (lib,"sdl2main.lib")
 #include "DrawManager.h"
 #include "StateManager.h"
+#include "SpriteManager.h"
 #include "GameState.h"
 #include "MenuState.h"
 
@@ -45,13 +48,19 @@ bool Engine::Initialize()
 		return false;
 	}
 
-	if(mgr.m_current == nullptr)
+	m_sprite_manager = new SpriteManager(m_draw_manager);
+	if (!m_sprite_manager->Initialize("../data/sprites/"))
 	{
-		mgr.Attach(new MenuState);
-		mgr.Attach(new GameState);
-		mgr.SetState("MenuState");
+		return false;
 	}
 
+
+	if(mgr.m_current == nullptr)
+	{
+		mgr.Attach(new MenuState(m_draw_manager->GetRenderer()));
+		mgr.Attach(new GameState);
+		mgr.SetState("GameState");
+	}
 	
 m_running = true;
 	return true;
@@ -63,9 +72,12 @@ void Engine::Run()
 	while(m_running)
 	{
 		UpdateEvents();
+		
 		m_draw_manager->Clear();
-
+		mgr.Update(10);
+		mgr.Draw();
 		m_draw_manager->Present();
+
 		SDL_Delay(10);
 	}
 
@@ -82,6 +94,8 @@ void Engine::UpdateEvents()
 		{
 			m_running=false;
 		}
+		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == 'k')
+			mgr.ChangeState();
 
 	}
 
@@ -100,6 +114,12 @@ void Engine::Cleanup()
 		m_draw_manager->Cleanup();
 		delete m_draw_manager;
 		m_draw_manager=nullptr;
+	}
+	if (m_sprite_manager != nullptr)
+	{
+		m_sprite_manager->Cleanup();
+		delete m_sprite_manager;
+		m_sprite_manager=nullptr;
 	}
 
 

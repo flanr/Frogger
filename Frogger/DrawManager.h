@@ -29,6 +29,8 @@ public:
 	Prints Updated screen?
 	**/
 	void Draw(Sprite *p_sprite, int p_x, int p_y);
+
+	SDL_Renderer* GetRenderer();
 private:
 	struct SDL_Renderer *m_renderer;
 };
