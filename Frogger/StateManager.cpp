@@ -54,6 +54,7 @@ void StateManager::Draw()
 
 void StateManager::ChangeState()
 {
+	std::cout << "ChangeState()" << std::endl;
 	std::string next = m_current->Next();
 	if (m_current != nullptr)
 	{

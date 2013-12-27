@@ -4,9 +4,9 @@
 #include <iostream>
 
 
-GameState::GameState()
+GameState::GameState(SDL_Renderer* renderer)
 {
-
+	this->renderer = renderer;
 	// bool GameStateRunning = false;
 }
 
@@ -14,7 +14,7 @@ bool GameState::Enter()
 {
 	// GameStateRunning = true:
 	
-	std::cout << "GameState now running";
+	std::cout << "GameState now running" << std::endl;
 	return false;
 }
 
@@ -25,13 +25,14 @@ void GameState::Exit()
 
 bool GameState::Update(float p_deltatime)
 {
-
-	return false;
+	
+	return true;
 }
 
 void GameState::Draw()
 {
-	
+	SDL_SetRenderDrawColor(renderer, 255,0,255,0xff);
+	SDL_RenderClear(renderer);
 }
 
 

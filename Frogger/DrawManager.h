@@ -1,6 +1,7 @@
 // DrawManager.h
 
 #pragma once
+#include "SDL.h"
 class Sprite;
 class DrawManager
 {

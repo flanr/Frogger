@@ -58,7 +58,7 @@ bool Engine::Initialize()
 	if(mgr.m_current == nullptr)
 	{
 		mgr.Attach(new MenuState(m_draw_manager->GetRenderer()));
-		mgr.Attach(new GameState);
+		mgr.Attach(new GameState(m_draw_manager->GetRenderer()));
 		mgr.SetState("GameState");
 	}
 	

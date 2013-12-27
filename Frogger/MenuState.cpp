@@ -12,7 +12,7 @@ MenuState::MenuState(SDL_Renderer* renderer)
 bool MenuState::Enter()
 {
 	// MenuStateRunning = true:
-	std::cout << "menu state now running";
+	std::cout << "MenuState now running" << std::endl;
 	return false;
 }
 
@@ -23,7 +23,7 @@ void MenuState::Exit()
 
 bool MenuState::Update(float p_deltatime)
 {
-	return false;
+	return true;
 }
 
 void MenuState::Draw()

@@ -12,6 +12,7 @@ public:
 	**/
 	virtual bool Enter() =0;
 	virtual void Exit() = 0;
+	//Update keypresses and internal things
 	virtual bool Update(float p_deltatime) =0;
 	virtual void Draw() = 0;
 	virtual std::string Next() = 0;

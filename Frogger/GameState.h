@@ -3,11 +3,12 @@
 
 #pragma once
 #include "State.h"
+#include <SDL.h>
 
 class GameState : public State
 {
 public:
-	GameState();
+	GameState(SDL_Renderer* renderer);
 	bool Enter();
 	void Exit();
 	bool Update(float p_deltatime);
@@ -21,5 +22,5 @@ public:
 private:
 	bool m_done;
 	std::string m_state_next;
-
+	SDL_Renderer* renderer;
 };
