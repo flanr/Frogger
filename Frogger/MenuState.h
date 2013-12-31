@@ -2,13 +2,14 @@
 
 #pragma once
 #include "State.h"
+#include "Engine.h"
 #include <SDL.h>
 
 class MenuState : public State
 {
 public:
 	MenuState(SDL_Renderer* renderer);
-	bool Enter();
+	bool Enter(Engine*);
 	void Exit();
 	bool Update(float p_deltatime);
 	void Draw();

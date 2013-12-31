@@ -1,6 +1,7 @@
 // MenuState.cpp
 
 #include "MenuState.h"
+#include "Engine.h"
 #include <iostream>
 
 MenuState::MenuState(SDL_Renderer* renderer)
@@ -9,7 +10,7 @@ MenuState::MenuState(SDL_Renderer* renderer)
 	// bool MenuStateRunning = false;
 }
 
-bool MenuState::Enter()
+bool MenuState::Enter(Engine* engine)
 {
 	// MenuStateRunning = true:
 	std::cout << "MenuState now running" << std::endl;

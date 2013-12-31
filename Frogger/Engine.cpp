@@ -16,7 +16,6 @@ Engine::Engine()
 {
 	m_window=nullptr;
 	m_draw_manager=nullptr;
-
 	m_width = 0;
 	m_height = 0;
 	m_running = false;
@@ -48,21 +47,23 @@ bool Engine::Initialize()
 		return false;
 	}
 
-	m_sprite_manager = new SpriteManager(m_draw_manager);
+	/*m_sprite_manager = new SpriteManager(m_draw_manager);
 	if (!m_sprite_manager->Initialize("../data/sprites/"))
 	{
 		return false;
-	}
+	}*/
 
 
 	if(mgr.m_current == nullptr)
 	{
+		mgr.engine = this;
 		mgr.Attach(new MenuState(m_draw_manager->GetRenderer()));
 		mgr.Attach(new GameState(m_draw_manager->GetRenderer()));
+	
 		mgr.SetState("GameState");
 	}
-	
-m_running = true;
+
+	m_running = true;
 	return true;
 }
 
@@ -72,7 +73,7 @@ void Engine::Run()
 	while(m_running)
 	{
 		UpdateEvents();
-		
+
 		m_draw_manager->Clear();
 		mgr.Update(10);
 		mgr.Draw();
@@ -80,7 +81,6 @@ void Engine::Run()
 
 		SDL_Delay(10);
 	}
-
 
 
 }
@@ -123,4 +123,20 @@ void Engine::Cleanup()
 	}
 
 
+
+}
+
+//struct SDL_Window* Engine::GetWindow()
+//{
+//	return m_window; ///////
+//}
+//
+//int Engine::GetWidth()
+//{
+//	return m_width;
+//}
+//
+int Engine::GetHeight()
+{
+	return m_height;
 }

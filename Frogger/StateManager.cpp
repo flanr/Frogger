@@ -9,6 +9,7 @@
 StateManager::StateManager()
 {
 	m_current = nullptr;
+	this->engine = engine;
 }
 
 StateManager::~StateManager()
@@ -66,7 +67,7 @@ void StateManager::ChangeState()
 		if (m_states[i]->IsType(next))
 		{
 			m_current = m_states[i];
-			m_current->Enter();
+			m_current->Enter(engine);
 			return;
 		}
 
@@ -86,7 +87,7 @@ void StateManager::SetState(const std::string &p_type)
 		if(m_states[i]->IsType(p_type))
 		{
 			m_current = m_states[i];
-			m_current->Enter();
+			m_current->Enter(engine);
 			return;
 		}
 

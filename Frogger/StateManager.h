@@ -40,6 +40,8 @@ public:
 private:
 	std::vector<State*> m_states;
 	State *m_current;
+public:
+	Engine* engine;
 
 
 };
