@@ -54,7 +54,7 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 		x=0;
 		for (unsigned int i=0;i<row.length();i++)
 		{
-			if(row[i]==0)
+			if(row[i]=='0')
 			{
 				x +=m_width;
 				continue;

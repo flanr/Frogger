@@ -3,9 +3,11 @@
 #include "GameState.h"
 #include <iostream>
 #include "Level.h"
+#include "LevelBackground.h"
 #include "DrawManager.h"
 #include "SpriteManager.h"
 #include "Engine.h"
+
 
 GameState::GameState(SDL_Renderer* renderer)
 {
@@ -30,8 +32,9 @@ bool GameState::Enter(Engine* engine)
 	{
 		return false;
 	}
-
+	m_levelbackground = new LevelBackground;
 	m_level = new Level;
+	m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
 	m_level->Load("../data/levels/level.txt",m_sprite_manager);
 	std::cout << "GameState now running" << std::endl;
 	return false;
@@ -52,7 +55,9 @@ void GameState::Draw()
 {
 	
 	m_draw_manager->Clear();
+	m_levelbackground->Draw(m_draw_manager);
 	m_level->Draw(m_draw_manager);
+
 
 	
 }

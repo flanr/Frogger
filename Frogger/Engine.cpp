@@ -28,8 +28,8 @@ Engine::~Engine()
 
 bool Engine::Initialize()
 {
-	m_width = 1024;
-	m_height = 640;
+	m_width = 720;
+	m_height = 720;
 
 	// Start SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -115,12 +115,12 @@ void Engine::Cleanup()
 		delete m_draw_manager;
 		m_draw_manager=nullptr;
 	}
-	if (m_sprite_manager != nullptr)
-	{
-		m_sprite_manager->Cleanup();
-		delete m_sprite_manager;
-		m_sprite_manager=nullptr;
-	}
+	//if (m_sprite_manager != nullptr)
+	//{
+	//	m_sprite_manager->Cleanup();
+	//	delete m_sprite_manager;
+	//	m_sprite_manager=nullptr;
+	//}
 
 
 

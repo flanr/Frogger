@@ -6,6 +6,7 @@
 #include <SDL.h>
 class DrawManager;
 class Level;
+class LevelBackground;
 class SpriteManager;
 class GameState : public State
 {
@@ -29,5 +30,5 @@ private:
 	DrawManager* m_draw_manager;
 	SpriteManager* m_sprite_manager;
 	Level* m_level;
-	
+	LevelBackground *m_levelbackground;
 };
