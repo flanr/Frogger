@@ -96,6 +96,9 @@
     <ClCompile Include="LevelBackground.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="MusicClip.cpp" />
+    <ClCompile Include="SoundClip.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -111,6 +114,9 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelBackground.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MusicClip.h" />
+    <ClInclude Include="SoundClip.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="State.h" />

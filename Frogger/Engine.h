@@ -4,6 +4,9 @@
 #include "StateManager.h"
 class DrawManager;
 class SpriteManager;
+class SoundManager;
+class MusicClip;
+class SoundClip;
 class Engine{
 	friend class GameState;
 public:
@@ -37,6 +40,10 @@ public:
 	DrawManager *m_draw_manager;
 	SpriteManager *m_sprite_manager;
 	StateManager mgr;
+
+	SoundManager *m_SoundMgr;
+	MusicClip *m_MusicClip;
+	SoundClip *m_SoundClip;
 
 	bool m_running;
 
