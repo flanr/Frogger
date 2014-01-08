@@ -75,6 +75,18 @@ void StateManager::ChangeState()
 
 }
 
+
+void StateManager::SetKeyboard(Keyboard *keyboard)
+{
+	m_keyboard = keyboard;
+	
+}
+void StateManager::SetMouse(Mouse *mouse)
+{
+	m_mouse = mouse;
+}
+
+
 bool StateManager::IsRunning()
 {
 	return m_current != nullptr;
@@ -94,4 +106,5 @@ void StateManager::SetState(const std::string &p_type)
 	}
 
 }
+
 
