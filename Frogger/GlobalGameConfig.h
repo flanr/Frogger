@@ -1,6 +1,5 @@
 // GlobalGameConfig.h
 
-
 struct
 {
 	int musicVolume;

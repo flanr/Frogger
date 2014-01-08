@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include <SDL.h>
 #include "Menu.h"
+
 class MenuState : public State
 {
 public:
