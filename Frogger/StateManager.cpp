@@ -9,6 +9,7 @@
 StateManager::StateManager()
 {
 	m_current = nullptr;
+	this->engine = engine;
 }
 
 StateManager::~StateManager()
@@ -54,6 +55,7 @@ void StateManager::Draw()
 
 void StateManager::ChangeState()
 {
+	std::cout << "ChangeState()" << std::endl;
 	std::string next = m_current->Next();
 	if (m_current != nullptr)
 	{
@@ -65,13 +67,25 @@ void StateManager::ChangeState()
 		if (m_states[i]->IsType(next))
 		{
 			m_current = m_states[i];
-			m_current->Enter();
+			m_current->Enter(engine);
 			return;
 		}
 
 	}
 
 }
+
+
+void StateManager::SetKeyboard(Keyboard *keyboard)
+{
+	m_keyboard = keyboard;
+	
+}
+void StateManager::SetMouse(Mouse *mouse)
+{
+	m_mouse = mouse;
+}
+
 
 bool StateManager::IsRunning()
 {
@@ -85,11 +99,12 @@ void StateManager::SetState(const std::string &p_type)
 		if(m_states[i]->IsType(p_type))
 		{
 			m_current = m_states[i];
-			m_current->Enter();
+			m_current->Enter(engine);
 			return;
 		}
 
 	}
 
 }
+
 
