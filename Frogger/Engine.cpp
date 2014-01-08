@@ -10,22 +10,21 @@
 #include "SpriteManager.h"
 #include "GameState.h"
 #include "MenuState.h"
-#include "GameObjectManager.h"
-
-
+#include "SoundClip.h"
+#include "SoundManager.h"
+#include "MusicClip.h"
 
 Engine::Engine()
 {
 	m_window=nullptr;
 	m_draw_manager=nullptr;
-	m_sprite_manager = nullptr;
-
-
 	m_width = 0;
 	m_height = 0;
 	m_running = false;
-	m_deltatime = 0.01f;
-	m_ticks = SDL_GetTicks();
+
+	m_SoundMgr = nullptr;
+	m_MusicClip = nullptr;
+	m_SoundClip = nullptr;
 }
 Engine::~Engine()
 {
@@ -40,7 +39,7 @@ bool Engine::Initialize()
 
 	// Start SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
-	m_window = SDL_CreateWindow("Flubber",
+	m_window = SDL_CreateWindow("Frogger",
 		SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
 		m_width,m_height,
 		SDL_WINDOW_OPENGL);
@@ -55,61 +54,40 @@ bool Engine::Initialize()
 	}
 
 	/*m_sprite_manager = new SpriteManager(m_draw_manager);
-	if(!m_sprite_manager->Initialize("../data/sprites/")) {
-	return false;
-	};*/
+	if (!m_sprite_manager->Initialize("../data/sprites/"))
+	{
+		return false;
+	}*/
+	if (m_SoundMgr==nullptr)
+	{
+		m_SoundMgr = new SoundManager();
 
-	mgr.SetKeyboard(&m_keyboard);
-	mgr.SetMouse(&m_mouse);
-	menuobjectmanager = new GameObjectManager;
-	gameobjectmanager = new GameObjectManager;
+	}
 
 	if(mgr.m_current == nullptr)
 	{
-
 		mgr.engine = this;
-		mgr.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_keyboard,&m_mouse, menuobjectmanager));
-		mgr.Attach(new GameState(m_draw_manager->GetRenderer(),&m_keyboard, &m_mouse, gameobjectmanager));
-
-
+		mgr.Attach(new MenuState(m_draw_manager->GetRenderer()));
+		mgr.Attach(new GameState(m_draw_manager->GetRenderer()));
+	
 		mgr.SetState("GameState");
-
 	}
 
 	m_running = true;
 	return true;
 }
-void Engine::UpdateDeltatime()
-{
-	unsigned int ticks = SDL_GetTicks();
-	unsigned int delta = ticks - m_ticks;
-	m_ticks = ticks;
-	m_deltatime = (float)delta * 0.0001f;
-	if(m_deltatime > 0.1f) {
-		m_deltatime = 0.1f;
-	};
-}
-
 
 void Engine::Run()
 {
 
 	while(m_running)
 	{
-		UpdateDeltatime();
 		UpdateEvents();
 
-		//if(m_keyboard.IsDownOnce(SDLK_ESCAPE)) {
-		//	break;
-		//	};
-
-
 		m_draw_manager->Clear();
-		mgr.Update(m_deltatime);
+		mgr.Update(10);
 		mgr.Draw();
 		m_draw_manager->Present();
-		m_keyboard.PostUpdate();
-		m_mouse.PostUpdate();
 
 		SDL_Delay(10);
 	}
@@ -126,43 +104,13 @@ void Engine::UpdateEvents()
 		{
 			m_running=false;
 		}
-		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_k)
+		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == 'k')
 			mgr.ChangeState();
-		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
-		{
-			m_running = false;
-		}
-		else if(event.type == SDL_KEYDOWN) {
-			int index = event.key.keysym.sym & 0xFF;
-			m_keyboard.m_current[index] = true;
-		}
-		else if(event.type == SDL_KEYUP) {
-			int index = event.key.keysym.sym & 0xFF;
-			m_keyboard.m_current[index] = false;
-		}
-		else if(event.type == SDL_MOUSEMOTION) {
-			m_mouse.m_x = event.motion.x;
-			m_mouse.m_y = event.motion.y;
-		}
-		else if(event.type == SDL_MOUSEBUTTONDOWN) {
-			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_mouse.m_current[0] = true;
-			}
-			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_mouse.m_current[1] = true;
-			};
-		}
-		else if(event.type == SDL_MOUSEBUTTONUP) {
-			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_mouse.m_current[0] = false;
-			}
-			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_mouse.m_current[1] = false;
-			};
-		};
+
 	}
 
-};
+}
+
 
 void Engine::Cleanup()
 {
