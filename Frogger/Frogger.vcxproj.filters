@@ -57,16 +57,19 @@
     <ClCompile Include="LevelBackground.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerObject.cpp">
+    <ClCompile Include="MusicClip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
+    <ClCompile Include="SoundClip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectManager.cpp">
+    <ClCompile Include="SoundManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
+    <ClCompile Include="Slider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,16 +116,22 @@
     <ClInclude Include="LevelBackground.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerObject.h">
+    <ClInclude Include="SoundManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
+    <ClInclude Include="SoundClip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectManager.h">
+    <ClInclude Include="MusicClip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
+    <ClInclude Include="Slider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalGameConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
