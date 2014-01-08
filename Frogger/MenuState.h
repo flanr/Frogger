@@ -4,7 +4,7 @@
 #include "State.h"
 #include "Engine.h"
 #include <SDL.h>
-
+#include "Menu.h"
 class MenuState : public State
 {
 public:
@@ -23,5 +23,6 @@ private:
 	bool m_done;
 	std::string m_state_next;
 	SDL_Renderer* renderer;
+	Menu* menu;
 
 };

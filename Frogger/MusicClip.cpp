@@ -1,6 +1,6 @@
 // MusicClip.cpp
 #include "MusicClip.h"
-
+#include "GlobalGameConfig.h"
 
 MusicClip::MusicClip()
 {
@@ -50,4 +50,7 @@ void MusicClip::Stop()
 	m_Channel = -1;
 }
 
-
+void MusicClip::Volume()
+{
+	Mix_Volume(-1,GlobalGameConfig.musicVolume);
+}

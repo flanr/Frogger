@@ -32,6 +32,7 @@ bool GameState::Enter(Engine* engine)
 	{
 		return false;
 	}
+	
 	m_levelbackground = new LevelBackground;
 	m_level = new Level;
 	m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);

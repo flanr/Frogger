@@ -10,7 +10,9 @@
 #include "SpriteManager.h"
 #include "GameState.h"
 #include "MenuState.h"
-
+#include "SoundClip.h"
+#include "SoundManager.h"
+#include "MusicClip.h"
 
 Engine::Engine()
 {
@@ -19,6 +21,10 @@ Engine::Engine()
 	m_width = 0;
 	m_height = 0;
 	m_running = false;
+
+	m_SoundMgr = nullptr;
+	m_MusicClip = nullptr;
+	m_SoundClip = nullptr;
 }
 Engine::~Engine()
 {
@@ -52,7 +58,11 @@ bool Engine::Initialize()
 	{
 		return false;
 	}*/
+	if (m_SoundMgr==nullptr)
+	{
+		m_SoundMgr = new SoundManager();
 
+	}
 
 	if(mgr.m_current == nullptr)
 	{
