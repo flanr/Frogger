@@ -5,9 +5,6 @@
 #include "DrawManager.h"
 #include "Sprite.h"
 
-
-
-
 DrawManager::DrawManager()
 {
 	m_renderer = nullptr;

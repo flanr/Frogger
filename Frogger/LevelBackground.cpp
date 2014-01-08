@@ -83,7 +83,7 @@ bool LevelBackground::Load(const std::string &p_filename, SpriteManager *p_sprit
 
 			BackgroundObject *bo = new BackgroundObject(sprite);
 			bo->SetPosition(Vector2(x,y));
-			m_objects.push_back(bo);
+			m_objects.push_back(bo); // vad är detta ? 
 
 			x += m_width;
 

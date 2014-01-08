@@ -4,9 +4,12 @@
 #include "Vector2.h"
 class Sprite;
 class Collider;
+
 class GameObject
 {
 public:
+
+
 	GameObject(Sprite *sprite=nullptr, Collider *collider = nullptr);
 
 	const Vector2  &GetPosition() const;
@@ -17,15 +20,18 @@ public:
 
 	bool HasCollider() const;
 	Collider* GetCollider();
-
-
+	
+	virtual void Update(float deltatime);
 
 	~GameObject();
 
-private:
+protected:
 
 	Vector2 m_position;
 	Sprite *m_sprite;
 	Collider *m_collider;
 
+//	float velocity;
+
 };
+
