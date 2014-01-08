@@ -3,11 +3,15 @@
 #include "MenuState.h"
 #include "Engine.h"
 #include <iostream>
+#include "GameObjectManager.h"
 
-MenuState::MenuState(SDL_Renderer* renderer)
+MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
 {
 	this->renderer = renderer;
 	// bool MenuStateRunning = false;
+	m_keyboard = keyboard;
+	m_mouse = mouse;
+	m_manager = manager;
 }
 
 bool MenuState::Enter(Engine* engine)
@@ -24,6 +28,8 @@ void MenuState::Exit()
 
 bool MenuState::Update(float p_deltatime)
 {
+	m_manager->Update(p_deltatime);
+
 	return true;
 }
 
