@@ -4,7 +4,10 @@
 #include <vector>
 #include "Slider.h"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 948122011e19de45636c17dd9888beba34d8b268
 class Menu
 {
 public:

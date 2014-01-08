@@ -6,7 +6,10 @@
 #include "GlobalGameConfig.h"
 #include "Slider.h"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 948122011e19de45636c17dd9888beba34d8b268
 Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 {
 	this->m_x = m_x;
