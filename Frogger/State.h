@@ -4,8 +4,6 @@
 #include <string>
 #include "Engine.h"
 
-class GameObjectManager;
-
 class State
 {
 public:
@@ -21,6 +19,4 @@ public:
 	virtual std::string Next() = 0;
 	virtual bool IsType(const std::string &type) = 0;
 
-protected:
-	GameObjectManager *m_manager;
 };

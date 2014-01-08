@@ -2,6 +2,7 @@
 
 #include "BackgroundObject.h"
 
+
 BackgroundObject::BackgroundObject(Sprite *p_sprite)
 	:m_position(0.0f, 0.0f)
 	, m_sprite(p_sprite)

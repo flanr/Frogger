@@ -29,7 +29,7 @@ public:
 private:
 	DrawManager *m_draw_manager;
 	string m_directory;
-	map<string,Pair> m_sprites;
+	map<string,Pair> m_sprires;
 	
 
 };
