@@ -55,5 +55,5 @@ void MusicClip::Stop()
 
 void MusicClip::Volume()
 {
-	Mix_Volume(-1,getMusicVolume());
+	Mix_VolumeMusic(getMusicVolume());
 }

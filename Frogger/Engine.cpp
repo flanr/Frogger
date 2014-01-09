@@ -108,8 +108,7 @@ void Engine::Run()
 
 	while(m_running)
 	{
-		UpdateDeltatime();
-		UpdateEvents();
+		
 
 		m_draw_manager->Clear();
 		m_state_manager.Update(m_deltatime);
@@ -119,7 +118,8 @@ void Engine::Run()
 		m_mouse.PostUpdate();
 
 		m_MusicClip->Volume();
-
+		UpdateDeltatime();
+		UpdateEvents();
 		SDL_Delay(10);
 	}
 
