@@ -4,15 +4,10 @@
 #include "Engine.h"
 #include <iostream>
 #include "Menu.h"
-<<<<<<< HEAD
-#include "GlobalGameConfig.h"
 #include "GameObjectManager.h"
 
 
 MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
-=======
-MenuState::MenuState(SDL_Renderer* renderer)
->>>>>>> dec4b6422945bd17a5713882295105918aacdb22
 {
 	this->renderer = renderer;
 
@@ -39,6 +34,7 @@ void MenuState::Exit()
 
 bool MenuState::Update(float p_deltatime)
 {
+
 	menu->Run(renderer);
 	m_manager->Update(p_deltatime);
 

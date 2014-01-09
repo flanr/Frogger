@@ -14,7 +14,7 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	this->m_w = m_w;
 	this->m_h = m_h;
 
-	running = false;
+	running = true;
 
 	bgrect.x = m_x;
 	bgrect.y = m_y;
@@ -50,7 +50,7 @@ Menu::~Menu()
 
 void Menu::Run(SDL_Renderer* renderer)
 {
-	running = true;
+	//running = true;
 	while (running)
 	{
 		Draw(renderer);
@@ -83,7 +83,7 @@ void Menu::HandleInput()
 //keypress
 		if (event.type == SDL_KEYDOWN)
 		{
-			if (event.key.keysym.sym == 'm')
+			if (event.key.keysym.sym == 'k')
 			{
 
 				running = false;

@@ -13,11 +13,8 @@
 #include "MenuState.h"
 #include "SoundClip.h"
 #include "SoundManager.h"
-<<<<<<< HEAD
-#include "MusicClip.h"
 #include "GameObjectManager.h"
-=======
->>>>>>> dec4b6422945bd17a5713882295105918aacdb22
+
 
 
 Engine::Engine()
