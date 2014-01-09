@@ -9,10 +9,11 @@
 #include "StateManager.h"
 #include "SpriteManager.h"
 #include "GameState.h"
+#include "MusicClip.h"
 #include "MenuState.h"
 #include "SoundClip.h"
 #include "SoundManager.h"
-#include "MusicClip.h"
+
 
 Engine::Engine()
 {

@@ -4,7 +4,6 @@
 #include "Engine.h"
 #include <iostream>
 #include "Menu.h"
-#include "GlobalGameConfig.h"
 MenuState::MenuState(SDL_Renderer* renderer)
 {
 	this->renderer = renderer;

@@ -1,7 +1,7 @@
 // GlobalGameConfig.h
 
 
-struct
+struct GlobalGameConfigVariables
 {
 	int musicVolume;
 	int soundVolume;
