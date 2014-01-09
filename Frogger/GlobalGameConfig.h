@@ -1,8 +1,7 @@
 // GlobalGameConfig.h
 
 
-struct GlobalGameConfigVariables
-{
-	int musicVolume;
-	int soundVolume;
-}GlobalGameConfig;
+int getMusicVolume();
+int getSoundVolume();
+void setMusicVolume(int vol);
+void setSoundVolume(int vol);

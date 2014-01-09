@@ -79,7 +79,14 @@ MusicClip* SoundManager::CreateMusic(std::string p_Path)
 	std::map<std::string, Mix_Music*>::iterator It = m_Music.find(p_Path);
 	if (It == m_Music.end())
 	{
-		Mix_Music* Music = Mix_LoadMUS(p_Path.c_str());
+		const char* szPath = p_Path.c_str();
+		Mix_Music* Music;
+		try{
+			printf("Mix_LoadMUS(\"%s\");\r\n", szPath);
+			Music = Mix_LoadMUS((char*)szPath);
+		}catch(...){
+			printf("Error!\r\nFire! Fire! Hope to hear from you soon.");
+		}
 		std::pair<std::string,Mix_Music*> Pair;
 		Pair = std::make_pair(p_Path,Music);
 		m_Music.insert(Pair);

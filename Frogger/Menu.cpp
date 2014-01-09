@@ -20,14 +20,14 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	bgrect.y = m_y;
 	bgrect.h = m_h;
 	bgrect.w = m_w;
-	int sliderCount = 8;
+	int sliderCount = 4;
 	int offset = (m_h/sliderCount+1)/(sliderCount+1);
 	printf("%d", offset);
 	for(int n = 0; n < sliderCount; ++n){
 			sliders.push_back(new Slider(m_x + 20, m_y + offset*((n)) + offset/2 + (m_h/(sliderCount+1))*n, m_w - 40, m_h / (sliderCount + 1)));
 	}
 	sliders[0]->setValue(40);
-	GlobalGameConfig.musicVolume = sliders[0]->getValue();
+	setMusicVolume(sliders[0]->getValue());
 	sliders[1]->setValue(66);
 
 	
@@ -53,12 +53,17 @@ void Menu::Run(SDL_Renderer* renderer)
 	//running = true;
 	while (running)
 	{
-		Draw(renderer);
-		HandleInput();
-		SDL_RenderPresent(renderer);
-		SDL_Delay(10);
+		//Draw(renderer);
+		//HandleInput();
+		
+	
 	}
 }
+void Menu::UpdateVolume()
+{
+setMusicVolume(sliders[0]->getValue());
+}
+
 
 void Menu::Draw(SDL_Renderer* renderer)
 {

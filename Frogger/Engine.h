@@ -46,7 +46,7 @@ public:
 	int m_height;
 	DrawManager *m_draw_manager;
 	SpriteManager *m_sprite_manager;
-	StateManager mgr;
+	StateManager m_state_manager;
 
 	GameObjectManager *menuobjectmanager;
 	GameObjectManager *gameobjectmanager;

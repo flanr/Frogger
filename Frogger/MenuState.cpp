@@ -35,7 +35,12 @@ void MenuState::Exit()
 bool MenuState::Update(float p_deltatime)
 {
 
-	menu->Run(renderer);
+	//menu->Run(renderer);
+
+	menu->HandleInput(); ///////////////
+	menu->UpdateVolume();
+	SDL_Delay(10);
+	SDL_RenderPresent(renderer);
 	m_manager->Update(p_deltatime);
 
 	return true;
@@ -44,8 +49,9 @@ bool MenuState::Update(float p_deltatime)
 
 void MenuState::Draw()
 {
-	SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
-	SDL_RenderClear(renderer);
+	menu->Draw(renderer);
+	//SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
+	//SDL_RenderClear(renderer);
 }
 
 
