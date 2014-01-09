@@ -13,8 +13,10 @@ GameObject::~GameObject()
 {
 
 }
+void GameObject::Update(float deltatime)
+{
 
-
+}
 const Vector2 &GameObject::GetPosition() const
 {
 	return m_position;

@@ -5,10 +5,16 @@
 #include <iostream>
 #include "Menu.h"
 #include "GlobalGameConfig.h"
-MenuState::MenuState(SDL_Renderer* renderer)
+#include "GameObjectManager.h"
+
+
+MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
 {
 	this->renderer = renderer;
-	
+
+	m_keyboard = keyboard;
+	m_mouse = mouse;
+	m_manager = manager;
 	// bool MenuStateRunning = false;
 }
 
@@ -30,8 +36,10 @@ void MenuState::Exit()
 bool MenuState::Update(float p_deltatime)
 {
 	menu->Run(renderer);
+	m_manager->Update(p_deltatime);
+
 	return true;
-	
+
 }
 
 void MenuState::Draw()
@@ -43,7 +51,7 @@ void MenuState::Draw()
 
 std::string MenuState::Next()
 {
-return "GameState";
+	return "GameState";
 }
 
 bool MenuState::IsType(const std::string &p_type)

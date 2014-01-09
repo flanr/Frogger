@@ -5,6 +5,8 @@
 #include <vector>
 
 class State;
+class Keyboard;
+class Mouse;
 
 class StateManager
 {
@@ -37,9 +39,17 @@ public:
 	**/
 	bool IsRunning();
 
+	void SetKeyboard(Keyboard *keyboard);
+	void SetMouse(Mouse *mouse);
+
 private:
 	std::vector<State*> m_states;
 	State *m_current;
+
+	Keyboard *m_keyboard;
+	Mouse *m_mouse;
+
+
 public:
 	Engine* engine;
 

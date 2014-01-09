@@ -14,7 +14,7 @@ public:
 	Keyboard();
 
 	bool IsDownOnce(int key) const;
-
+	bool IsDown(int key) const;
 	void PostUpdate();
 
 private:
@@ -30,7 +30,7 @@ public:
 	int GetX() const;
 	int GetY() const;
 	bool IsDownOnce(EMouseButton button) const;
-
+	bool IsDown(EMouseButton button) const;
 	void PostUpdate();
 
 private:
