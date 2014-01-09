@@ -4,7 +4,6 @@
 #include "Engine.h"
 #include <iostream>
 #include "Menu.h"
-#include "GlobalGameConfig.h"
 #include "GameObjectManager.h"
 
 
