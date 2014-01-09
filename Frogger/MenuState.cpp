@@ -4,11 +4,15 @@
 #include "Engine.h"
 #include <iostream>
 #include "Menu.h"
+<<<<<<< HEAD
 #include "GlobalGameConfig.h"
 #include "GameObjectManager.h"
 
 
 MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
+=======
+MenuState::MenuState(SDL_Renderer* renderer)
+>>>>>>> dec4b6422945bd17a5713882295105918aacdb22
 {
 	this->renderer = renderer;
 

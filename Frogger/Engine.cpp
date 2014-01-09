@@ -9,11 +9,15 @@
 #include "StateManager.h"
 #include "SpriteManager.h"
 #include "GameState.h"
+#include "MusicClip.h"
 #include "MenuState.h"
 #include "SoundClip.h"
 #include "SoundManager.h"
+<<<<<<< HEAD
 #include "MusicClip.h"
 #include "GameObjectManager.h"
+=======
+>>>>>>> dec4b6422945bd17a5713882295105918aacdb22
 
 
 Engine::Engine()
