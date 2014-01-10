@@ -47,7 +47,7 @@ bool Engine::Initialize()
 	
 	SDL_Init(SDL_INIT_EVERYTHING);
 	if( SDL_Init(SDL_INIT_AUDIO) < 0 ) exit(1);
-	m_window = SDL_CreateWindow("Flubber",
+	m_window = SDL_CreateWindow("Frogger",
 		SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
 		m_width,m_height,
 		SDL_WINDOW_OPENGL);
