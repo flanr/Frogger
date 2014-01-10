@@ -77,13 +77,12 @@ bool Engine::Initialize()
 
 	m_state_manager.SetInput(&m_input);
 	
-	menuobjectmanager = new GameObjectManager;
 	gameobjectmanager = new GameObjectManager;
 
 	if(m_state_manager.m_current == nullptr)
 	{
 		m_state_manager.engine = this;
-		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_input, menuobjectmanager));
+		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_input));
 		m_state_manager.Attach(new GameState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
 
 		m_state_manager.SetState("GameState");

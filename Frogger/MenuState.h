@@ -13,7 +13,7 @@ class MenuState : public State
 
 {
 public:
-	MenuState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager);
+	MenuState(SDL_Renderer* renderer, InputManager *input);
 	bool Enter(Engine*);
 	void Exit();
 	bool Update(float p_deltatime);
