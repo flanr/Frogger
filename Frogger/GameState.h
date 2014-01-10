@@ -4,7 +4,7 @@
 #pragma once
 #include "State.h"
 #include <SDL.h>
-#include "Input.h"
+#include "InputManager.h"
 
 class DrawManager;
 class Level;
@@ -19,7 +19,7 @@ class GameState : public State
 {
 	friend class Engine;
 public:
-	GameState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager);
+	GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager);
 	bool Enter(Engine*);
 	void Exit();
 	bool Update(float p_deltatime);
@@ -42,7 +42,7 @@ private:
 
 	//Ladbon
 	PlayerObject* m_player;
-	Keyboard *m_keyboard;
-	Mouse *m_mouse;
+	InputManager *m_input;
+
 	Engine *m_engine;
 };

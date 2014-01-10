@@ -2,8 +2,7 @@
 
 #pragma once
 #include <SDL_mixer.h>
-#ifndef SOUNDCLIP_H_INCLUDED
-#define SOUNDCLIP_H_INCLUDED
+
 
 class SoundClip
 {
@@ -20,5 +19,3 @@ private:
 	Mix_Chunk* m_Clip;
 	int m_Channel;
 };
-
-#endif

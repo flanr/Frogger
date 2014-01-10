@@ -6,14 +6,14 @@
 #include <SDL.h>
 #include "Menu.h"
 
-class Keyboard;
-class Mouse;
+class InputManager;
+
 
 class MenuState : public State
 
 {
 public:
-	MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager);
+	MenuState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager);
 	bool Enter(Engine*);
 	void Exit();
 	bool Update(float p_deltatime);
@@ -26,8 +26,8 @@ public:
 
 private:
 	bool m_done;
-	Keyboard *m_keyboard;
-	Mouse *m_mouse;
+	InputManager *m_input;
+
 
 	std::string m_state_next;
 	SDL_Renderer* renderer;

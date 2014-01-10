@@ -95,12 +95,9 @@ void StateManager::SetState(const std::string &p_type)
 
 }
 
-void StateManager::SetKeyboard(Keyboard *keyboard)
+void StateManager::SetInput(InputManager *input)
 {
-	m_keyboard = keyboard;
-	
+	m_input = input;
+
 }
-void StateManager::SetMouse(Mouse *mouse)
-{
-	m_mouse = mouse;
-}
+

@@ -7,12 +7,11 @@
 #include "GameObjectManager.h"
 
 
-MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
+MenuState::MenuState(SDL_Renderer* renderer,InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;
 
-	m_keyboard = keyboard;
-	m_mouse = mouse;
+	m_input = input;
 	m_manager = manager;
 	// bool MenuStateRunning = false;
 }

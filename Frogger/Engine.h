@@ -2,7 +2,7 @@
 
 #pragma once
 #include "StateManager.h"
-#include "Input.h"
+#include "InputManager.h"
 
 class DrawManager;
 class SpriteManager;
@@ -57,8 +57,8 @@ public:
 
 
 	//Ladbon
-	Keyboard m_keyboard;// dessa måste ändras till "include InputManager men tills vidare
-	Mouse m_mouse; // samma här
+	InputManager m_input;
+
 
 	bool m_running;
 

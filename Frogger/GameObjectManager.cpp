@@ -3,6 +3,7 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
 #include "DrawManager.h"
+#include "Collider.h"
 
 GameObjectManager::GameObjectManager()
 {
@@ -24,6 +25,7 @@ void GameObjectManager::Update(float deltatime)
 //attach 
 void GameObjectManager::AttachObject(GameObject *object)
 {
+	
 	m_gameobject.push_back(object);
 }
 //detach
@@ -39,7 +41,20 @@ void GameObjectManager::DetachObject(GameObject *object)
 		}
 	}
 }
-//draw
+void GameObjectManager::DetachObject()
+{
+	for( auto it = m_gameobject.begin();it != m_gameobject.end(); it++) 
+	{			
+		delete (*it)->GetCollider();
+		delete *it;
+		*it = nullptr;
+		m_gameobject.erase(it);
+
+
+	}
+
+}
+
 void GameObjectManager::DrawObject(DrawManager *draw)
 {
 	for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)

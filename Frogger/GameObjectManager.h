@@ -21,6 +21,7 @@ public:
 	void AttachObject(GameObject *object);
 	//detach
 	void DetachObject(GameObject *object);
+	void DetachObject();
 	//draw
 	void DrawObject(DrawManager *draw);
 

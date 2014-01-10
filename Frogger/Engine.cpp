@@ -75,16 +75,16 @@ bool Engine::Initialize()
 
 	}
 
-	m_state_manager.SetKeyboard(&m_keyboard);
-	m_state_manager.SetMouse(&m_mouse);
+	m_state_manager.SetInput(&m_input);
+	
 	menuobjectmanager = new GameObjectManager;
 	gameobjectmanager = new GameObjectManager;
 
 	if(m_state_manager.m_current == nullptr)
 	{
 		m_state_manager.engine = this;
-		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_keyboard,&m_mouse, menuobjectmanager));
-		m_state_manager.Attach(new GameState(m_draw_manager->GetRenderer(),&m_keyboard, &m_mouse, gameobjectmanager));
+		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_input, menuobjectmanager));
+		m_state_manager.Attach(new GameState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
 
 		m_state_manager.SetState("GameState");
 	}
@@ -114,8 +114,8 @@ void Engine::Run()
 		m_state_manager.Update(m_deltatime);
 		m_state_manager.Draw();
 		m_draw_manager->Present();
-		m_keyboard.PostUpdate();
-		m_mouse.PostUpdate();
+		m_input.PostKeyboardUpdate();
+		m_input.PostMouseUpdate();
 
 		m_MusicClip->Volume();
 		UpdateDeltatime();
@@ -143,30 +143,30 @@ void Engine::UpdateEvents()
 		}
 		else if(event.type == SDL_KEYDOWN) {
 			int index = event.key.keysym.sym & 0xFF;
-			m_keyboard.m_current[index] = true;
+			m_input.m_current[index] = true;
 		}
 		else if(event.type == SDL_KEYUP) {
 			int index = event.key.keysym.sym & 0xFF;
-			m_keyboard.m_current[index] = false;
+			m_input.m_current[index] = false;
 		}
 		else if(event.type == SDL_MOUSEMOTION) {
-			m_mouse.m_x = event.motion.x;
-			m_mouse.m_y = event.motion.y;
+			m_input.m_x = event.motion.x;
+			m_input.m_y = event.motion.y;
 		}
 		else if(event.type == SDL_MOUSEBUTTONDOWN) {
 			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_mouse.m_current[0] = true;
+				m_input.m_current[0] = true;
 			}
 			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_mouse.m_current[1] = true;
+				m_input.m_current[1] = true;
 			};
 		}
 		else if(event.type == SDL_MOUSEBUTTONUP) {
 			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_mouse.m_current[0] = false;
+				m_input.m_current[0] = false;
 			}
 			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_mouse.m_current[1] = false;
+				m_input.m_current[1] = false;
 			};
 		};
 	}

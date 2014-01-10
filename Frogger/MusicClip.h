@@ -1,8 +1,7 @@
 // MusicClip.h
 #pragma once
 #include <SDL_mixer.h>
-#ifndef MUSICCLIP_H_INCLUDED
-#define MUSICCLIP_H_INCLUDED
+
 
 class MusicClip
 {
@@ -21,5 +20,3 @@ private:
 	int m_Channel;
 };
 
-
-#endif

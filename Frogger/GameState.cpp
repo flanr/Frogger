@@ -9,22 +9,22 @@
 #include "Engine.h"
 #include "PlayerObject.h"
 #include "Collider.h"
-#include "Input.h"
+#include "InputManager.h"
 #include "Sprite.h"
 #include "GameObject.h"
 #include "GameObjectManager.h"
 
 
 
-GameState::GameState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
+GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;
 	m_draw_manager = nullptr;
 	m_level = nullptr;
 	m_player = nullptr;
 
-	m_keyboard = keyboard;
-	m_mouse = mouse;
+	m_input = input;
+
 	m_manager = manager;
 	// bool GameStateRunning = false;
 }
@@ -57,7 +57,7 @@ bool GameState::Enter(Engine* engine)
 		m_level->GetPlayerStartPosition(), 
 		Vector2(70.0f, 70.0f));
 
-	m_player = new PlayerObject(m_keyboard,sprite, collider);
+	m_player = new PlayerObject(m_input,sprite, collider);
 	m_player->SetPosition(m_level->GetPlayerStartPosition());
 
 	std::cout << "GameState now running" << std::endl;

@@ -7,15 +7,22 @@
 #include "DrawManager.h"
 #include "GameObject.h"
 #include "Collider.h"
+#include "GameObjectManager.h"
 
 Level::Level()
 {
 	m_height =0;
 	m_width =0;
+	gom = nullptr;
 }
 
 bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 {
+	if(gom == nullptr)
+	{
+		gom = new GameObjectManager;
+	}
+
 	std::ifstream stream(p_filename);
 	if(!stream.is_open())
 	{
@@ -79,8 +86,10 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 			collider->m_extension = Vector2(c.w,c.h);
 
 			GameObject *go = new GameObject(sprite, collider);
+			
 			go->SetPosition(Vector2(x,y));
-			m_objects.push_back(go);
+			gom->AttachObject(go);
+		
 
 
 
@@ -97,26 +106,12 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 
 Level::~Level()
 {
-	auto it = m_objects.begin();
-	while(it !=m_objects.end())
-	{
-		delete (*it)->GetSprite();
-		delete (*it)->GetCollider();
-		delete (*it);
-		it++;
-	}
-
-
+	gom->DetachObject();
 }
 
 void Level::Draw(DrawManager *p_draw_manager)
 {
-for(auto i=0UL; i < m_objects.size();i++)
-	{
-		p_draw_manager->Draw(m_objects[i]->GetSprite(),
-			m_objects[i]->GetPosition().m_x,
-			m_objects[i]->GetPosition().m_y);
-	}
+	gom->DrawObject(p_draw_manager);
 }
 
 Vector2 Level::GetPlayerStartPosition()

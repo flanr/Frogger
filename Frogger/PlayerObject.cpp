@@ -3,17 +3,17 @@
 #include "PlayerObject.h"
 #include <cstdio>
 #include <SDL.h>
-#include "Input.h"
+#include "InputManager.h"
 #include "Sprite.h"
 #include "Collider.h"
 #include <iostream>
 
-PlayerObject::PlayerObject(Keyboard *keyboard, Sprite* sprite, Collider* collider)
+PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* collider)
 	: GameObject(sprite, collider)
-	, m_keyboard(keyboard)
+	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
-//	m_current_animation = nullptr;
+//	m_current_animation = nullptr;7
 }
 void PlayerObject::Update(float deltatime)
 {
@@ -21,20 +21,20 @@ void PlayerObject::Update(float deltatime)
 	m_velocity.m_y = 0.0f;
 	float movespeed = 70.0f;
 
-	if(m_keyboard->IsDownOnce(SDLK_a))
+	if(m_input->IsDownOnce(SDLK_a))
 	{
 		std::cout << "a\n";
 		m_velocity.m_x -= movespeed;
 	}
-	if(m_keyboard->IsDownOnce(SDLK_d))
+	if(m_input->IsDownOnce(SDLK_d))
 	{
 		m_velocity.m_x += movespeed;
 	}
-	if(m_keyboard->IsDownOnce(SDLK_w))
+	if(m_input->IsDownOnce(SDLK_w))
 	{
 		m_velocity.m_y -= movespeed;
 	}
-	if(m_keyboard->IsDownOnce(SDLK_s))
+	if(m_input->IsDownOnce(SDLK_s))
 	{	
 		m_velocity.m_y += movespeed;
 	}

@@ -10,6 +10,7 @@
 class SpriteManager;
 class DrawManager;
 class GameObject;
+class GameObjectManager;
 
 class Level
 {
@@ -30,7 +31,7 @@ private:
 	unsigned int m_height;
 	std::map<char,Coords> m_tile_coords;
 
-	std::vector<GameObject*> m_objects;
+	GameObjectManager* gom;
 	Vector2 m_start_position;
 
 };

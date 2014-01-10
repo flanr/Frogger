@@ -3,8 +3,6 @@
 
 #pragma once
 
-#ifndef SOUNDMANAGER_H_INCLUDED
-#define SOUNDMANAGER_H_INCLUDED
 #include <string>
 #include <map>
 #include <vector>
@@ -28,6 +26,3 @@ private:
 	std::vector<MusicClip*> m_MusicClips;
 	std::vector<SoundClip*> m_SoundClips;
 };
-
-
-#endif
