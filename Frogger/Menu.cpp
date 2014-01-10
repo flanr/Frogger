@@ -14,23 +14,23 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	this->m_w = m_w;
 	this->m_h = m_h;
 
-	running = false;
+	running = true;
 
 	bgrect.x = m_x;
 	bgrect.y = m_y;
 	bgrect.h = m_h;
 	bgrect.w = m_w;
-	int sliderCount = 8;
+	int sliderCount = 4;
 	int offset = (m_h/sliderCount+1)/(sliderCount+1);
 	printf("%d", offset);
 	for(int n = 0; n < sliderCount; ++n){
-			sliders.push_back(new Slider(m_x + 20, m_y + offset*((n)) + offset/2 + (m_h/(sliderCount+1))*n, m_w - 40, m_h / (sliderCount + 1)));
+		sliders.push_back(new Slider(m_x + 20, m_y + offset*((n)) + offset/2 + (m_h/(sliderCount+1))*n, m_w - 40, m_h / (sliderCount + 1)));
 	}
 	sliders[0]->setValue(40);
-	GlobalGameConfig.musicVolume = sliders[0]->getValue();
+	setMusicVolume(sliders[0]->getValue());
 	sliders[1]->setValue(66);
 
-	
+
 	/*sliders.push_back(new Slider(m_x + 20, m_y + offset, m_w -40, m_h / (sliderCount+1))); // Pushback Slider* 
 	sliders.push_back(new Slider(m_x + 20, m_y + offset + 1*m_h /(sliderCount+1)+(offset*1), m_w -40, m_h/(sliderCount+1)));
 	sliders.push_back(new Slider(m_x + 20, m_y + offset + 2*m_h /(sliderCount+1)+(offset*2), m_w -40, m_h/(sliderCount+1)));
@@ -50,15 +50,20 @@ Menu::~Menu()
 
 void Menu::Run(SDL_Renderer* renderer)
 {
-	running = true;
-	while (running)
-	{
-		Draw(renderer);
-		HandleInput();
-		SDL_RenderPresent(renderer);
-		SDL_Delay(10);
-	}
+	//running = true;
+	//while (running)
+	//{
+	//Draw(renderer);
+	//HandleInput();
+
+
+	//}
 }
+void Menu::UpdateVolume()
+{
+	setMusicVolume(sliders[0]->getValue());
+}
+
 
 void Menu::Draw(SDL_Renderer* renderer)
 {
@@ -80,16 +85,16 @@ void Menu::HandleInput()
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
-//keypress
+		//keypress
 		if (event.type == SDL_KEYDOWN)
 		{
-			if (event.key.keysym.sym == 'm')
+			if (event.key.keysym.sym == 'k')
 			{
 
 				running = false;
 			}
 		}
-//Mouse
+		//Mouse
 		if (event.type == SDL_MOUSEMOTION)
 		{
 			mouseX = event.motion.x;

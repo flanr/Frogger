@@ -4,11 +4,16 @@
 #include "Engine.h"
 #include <iostream>
 #include "Menu.h"
-#include "GlobalGameConfig.h"
-MenuState::MenuState(SDL_Renderer* renderer)
+#include "GameObjectManager.h"
+
+
+MenuState::MenuState(SDL_Renderer* renderer, Keyboard *keyboard, Mouse *mouse, GameObjectManager *manager)
 {
 	this->renderer = renderer;
-	
+
+	m_keyboard = keyboard;
+	m_mouse = mouse;
+	m_manager = manager;
 	// bool MenuStateRunning = false;
 }
 
@@ -29,21 +34,30 @@ void MenuState::Exit()
 
 bool MenuState::Update(float p_deltatime)
 {
-	menu->Run(renderer);
+
+	//menu->Run(renderer);
+
+	menu->HandleInput(); ///////////////
+	menu->UpdateVolume();
+	SDL_Delay(10);
+	SDL_RenderPresent(renderer);
+	m_manager->Update(p_deltatime);
+
 	return true;
-	
+
 }
 
 void MenuState::Draw()
 {
-	SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
-	SDL_RenderClear(renderer);
+	menu->Draw(renderer);
+	//SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
+	//SDL_RenderClear(renderer);
 }
 
 
 std::string MenuState::Next()
 {
-return "GameState";
+	return "GameState";
 }
 
 bool MenuState::IsType(const std::string &p_type)
