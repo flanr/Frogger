@@ -118,7 +118,7 @@ void Engine::Run()
 
 		m_MusicClip->Volume();
 		UpdateDeltatime();
-		m_input.HandleInput(m_running, m_input, m_state_manager);
+		m_input.HandleInput(&m_running, &m_input, &m_state_manager);
 		SDL_Delay(10);
 	}
 

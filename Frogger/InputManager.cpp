@@ -23,7 +23,7 @@ InputManager::InputManager() {
 	};
 };
 
-void InputManager::HandleInput(bool m_running, InputManager m_input, StateManager m_state_manager)
+void InputManager::HandleInput(bool *m_running, InputManager *m_input, StateManager *m_state_manager)
 {
 
 	SDL_Event event;
@@ -31,40 +31,40 @@ void InputManager::HandleInput(bool m_running, InputManager m_input, StateManage
 	{
 		if(event.type == SDL_QUIT)
 		{
-			m_running=false;
+			*m_running=false;
 		}
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_k)
-			m_state_manager.ChangeState();
+			m_state_manager->ChangeState();
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
 		{
-			m_running = false;
+			*m_running = false;
 		}
 		else if(event.type == SDL_KEYDOWN) {
 			int index = event.key.keysym.sym & 0xFF;
-			m_input.m_current[index] = true;
+			m_input->m_current[index] = true;
 		}
 		else if(event.type == SDL_KEYUP) {
 			int index = event.key.keysym.sym & 0xFF;
-			m_input.m_current[index] = false;
+			m_input->m_current[index] = false;
 		}
 		else if(event.type == SDL_MOUSEMOTION) {
-			m_input.m_x = event.motion.x;
-			m_input.m_y = event.motion.y;
+			m_input->m_x = event.motion.x;
+			m_input->m_y = event.motion.y;
 		}
 		else if(event.type == SDL_MOUSEBUTTONDOWN) {
 			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_input.m_current[0] = true;
+				m_input->m_current[0] = true;
 			}
 			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_input.m_current[1] = true;
+				m_input->m_current[1] = true;
 			};
 		}
 		else if(event.type == SDL_MOUSEBUTTONUP) {
 			if(event.button.button == SDL_BUTTON_LEFT) {
-				m_input.m_current[0] = false;
+				m_input->m_current[0] = false;
 			}
 			else if(event.button.button == SDL_BUTTON_RIGHT) {
-				m_input.m_current[1] = false;
+				m_input->m_current[1] = false;
 			};
 		};
 	}

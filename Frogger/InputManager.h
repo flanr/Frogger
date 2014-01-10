@@ -28,7 +28,7 @@ public:
 	bool IsDown(EMouseButton button) const;
 	
 	void PostMouseUpdate();
-	void HandleInput(bool m_running, InputManager m_input, StateManager m_state_manager);
+	void HandleInput(bool *m_running, InputManager *m_input, StateManager *m_state_manager);
 
 
 private:
