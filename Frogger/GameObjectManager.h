@@ -4,12 +4,14 @@
 
 enum TYPE
 {
+	GAMEOBJ,
 	PLAYER,
 	WATER,
 	CAR,
 	LOG,
 	TURTLE,
-	GOAL
+	GOAL,
+	BACKGROUND
 };
 
 #include <vector>

@@ -2,12 +2,15 @@
 
 #pragma once
 #include "Vector2.h"
+#include "GameObjectManager.h"
+
 class Sprite;
 class Collider;
 class GameObject
 {
 public:
 	GameObject(Sprite *sprite=nullptr, Collider *collider = nullptr);
+	virtual TYPE GetID();
 
 	const Vector2  &GetPosition() const;
 	void SetPosition(const Vector2 &p_position);

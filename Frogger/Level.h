@@ -31,7 +31,7 @@ private:
 	unsigned int m_height;
 	std::map<char,Coords> m_tile_coords;
 
-	
+
 
 	GameObjectManager* gom;
 	Vector2 m_start_position;

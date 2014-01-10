@@ -15,7 +15,8 @@ class PlayerObject : public GameObject {
 public:
 
 	PlayerObject(InputManager *control, Sprite* sprite = nullptr, Collider* collider = nullptr);
-	
+	TYPE GetID();
+
 	void Update(float deltatime);
 //	void AddAnimation(const std::string &name, AnimatedSprite *sprite);
 

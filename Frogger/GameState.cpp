@@ -57,7 +57,7 @@ bool GameState::Enter(Engine* engine)
 		m_level->GetPlayerStartPosition(), 
 		Vector2(70.0f, 70.0f));
 
-	m_player = new PlayerObject(m_input,sprite, collider);
+	m_player = new PlayerObject(m_input, sprite, collider);
 	m_player->SetPosition(m_level->GetPlayerStartPosition());
 
 	m_water = new Water(nullptr, collider);

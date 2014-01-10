@@ -15,6 +15,7 @@ Level::Level()
 	m_height =0;
 	m_width =0;
 	gom = nullptr;
+
 }
 
 bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
@@ -64,10 +65,12 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 		{
 			if(row[i]=='0')
 			{
+		
 				x +=m_width;
 				continue;
 			}else if(row[i] == 'S')
 			{
+			
 				m_start_position.m_x = x;
 				m_start_position.m_y = y;
 				x += m_width;
@@ -75,11 +78,12 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 
 			}else if(row[i] == '2')
 			{
+			
 				m_start_position.m_x = x;
 				m_start_position.m_y = y;
 			}
 
-			std::cout << m_start_position.m_x << "/" << m_start_position.m_y << "\n";
+			std::cout << m_start_position.m_x << "/" << m_start_position.m_y << "";
 
 			std::map<char,Coords>::iterator it = m_tile_coords.find(row[i]);
 			if(it == m_tile_coords.end())
@@ -98,10 +102,14 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 			go->SetPosition(Vector2(x,y));
 			gom->AttachObject(go);
 
+		
+
 			x += m_width;
 
 		}
 		y += m_height;
+
+	
 	}
 	stream.close();
 	return true;

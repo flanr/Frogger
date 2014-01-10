@@ -13,3 +13,7 @@ void Water::Update(float deltatime)
 {
 	
 }
+TYPE Water::GetID()
+{
+	return WATER;
+}

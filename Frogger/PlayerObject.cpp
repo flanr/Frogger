@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <SDL.h>
 #include "InputManager.h"
+#include "GameObjectManager.h"
 #include "Sprite.h"
 #include "Collider.h"
 #include <iostream>
@@ -15,6 +16,12 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 { 
 //	m_current_animation = nullptr;7
 }
+
+TYPE PlayerObject::GetID()
+{
+	return PLAYER;
+}
+
 void PlayerObject::Update(float deltatime)
 {
 	m_velocity.m_x = 0.0f;

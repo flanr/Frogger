@@ -44,7 +44,7 @@ bool Engine::Initialize()
 	m_height = 720;
 
 	// Start SDL
-	
+
 	SDL_Init(SDL_INIT_EVERYTHING);
 	if( SDL_Init(SDL_INIT_AUDIO) < 0 ) exit(1);
 	m_window = SDL_CreateWindow("Frogger",
@@ -60,7 +60,7 @@ bool Engine::Initialize()
 	{
 		return false;
 	}
-	
+
 	/*m_sprite_manager = new SpriteManager(m_draw_manager);
 	if (!m_sprite_manager->Initialize("../data/sprites/"))
 	{
@@ -76,7 +76,7 @@ bool Engine::Initialize()
 	}
 
 	m_state_manager.SetInput(&m_input);
-	
+
 	gameobjectmanager = new GameObjectManager;
 
 	if(m_state_manager.m_current == nullptr)
@@ -107,7 +107,7 @@ void Engine::Run()
 
 	while(m_running)
 	{
-		
+
 
 		m_draw_manager->Clear();
 		m_state_manager.Update(m_deltatime);
@@ -118,7 +118,7 @@ void Engine::Run()
 
 		m_MusicClip->Volume();
 		UpdateDeltatime();
-		UpdateEvents();
+		m_input.HandleInput(m_running, m_input, m_state_manager);
 		SDL_Delay(10);
 	}
 
@@ -127,6 +127,7 @@ void Engine::Run()
 
 void Engine::UpdateEvents()
 {
+/*
 	SDL_Event event;
 	while(SDL_PollEvent(&event))
 	{
@@ -169,9 +170,8 @@ void Engine::UpdateEvents()
 			};
 		};
 	}
-
+*/
 }
-
 
 void Engine::Cleanup()
 {

@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "StateManager.h"
+
 enum EMouseButton {
 	MB_LEFT,
 	MB_RIGHT,
@@ -26,7 +28,7 @@ public:
 	bool IsDown(EMouseButton button) const;
 	
 	void PostMouseUpdate();
-	void HandleInput();
+	void HandleInput(bool m_running, InputManager m_input, StateManager m_state_manager);
 
 
 private:

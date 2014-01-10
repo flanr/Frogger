@@ -12,7 +12,8 @@ class Water : public GameObject
 {
 public:
 	Water(Sprite* sprite = nullptr, Collider* collider = nullptr);
-	
+	virtual TYPE GetID();
+
 	void Update(float deltatime);
 
 private:
