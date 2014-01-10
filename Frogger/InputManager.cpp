@@ -21,6 +21,13 @@ InputManager::InputManager() {
 		m_previous[i] = false;
 	};
 };
+
+void InputManager::HandleInput()
+{
+
+
+}
+
 bool InputManager::IsDownOnce(int key) const {
 	return m_current[key] && !m_previous[key];
 };

@@ -13,6 +13,7 @@ class SpriteManager;
 //Ladbon
 class PlayerObject;
 class GameObject;
+class Water;
 
 
 class GameState : public State
@@ -43,6 +44,6 @@ private:
 	//Ladbon
 	PlayerObject* m_player;
 	InputManager *m_input;
-
+	Water *m_water;
 	Engine *m_engine;
 };

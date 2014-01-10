@@ -40,7 +40,7 @@ bool MenuState::Update(float p_deltatime)
 	menu->UpdateVolume();
 	SDL_Delay(10);
 	SDL_RenderPresent(renderer);
-	m_manager->Update(p_deltatime);
+	
 
 	return true;
 

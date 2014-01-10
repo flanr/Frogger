@@ -13,7 +13,7 @@
 #include "Sprite.h"
 #include "GameObject.h"
 #include "GameObjectManager.h"
-
+#include "Water.h"
 
 
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
@@ -22,7 +22,7 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	m_draw_manager = nullptr;
 	m_level = nullptr;
 	m_player = nullptr;
-
+	m_water = nullptr;
 	m_input = input;
 
 	m_manager = manager;
@@ -60,6 +60,9 @@ bool GameState::Enter(Engine* engine)
 	m_player = new PlayerObject(m_input,sprite, collider);
 	m_player->SetPosition(m_level->GetPlayerStartPosition());
 
+	m_water = new Water(nullptr, collider);
+	m_water->SetPosition(m_level->GetPlayerStartPosition());
+
 	std::cout << "GameState now running" << std::endl;
 	return false;
 }
@@ -72,6 +75,7 @@ void GameState::Exit()
 bool GameState::Update(float p_deltatime)
 {
 	m_player->Update(p_deltatime);
+	m_water->Update(p_deltatime);
 	return true;
 }
 
@@ -82,13 +86,11 @@ void GameState::Draw()
 	m_levelbackground->Draw(m_draw_manager);
 	m_level->Draw(m_draw_manager);
 
-		m_draw_manager->Draw(
+	m_draw_manager->Draw(
 		m_player->GetSprite(),
 		m_player->GetPosition().m_x,
 		m_player->GetPosition().m_y);
 	m_draw_manager->Present();
-
-
 }
 
 

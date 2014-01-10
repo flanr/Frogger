@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "Collider.h"
 #include "GameObjectManager.h"
+#include <iostream>
 
 Level::Level()
 {
@@ -71,7 +72,15 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 				m_start_position.m_y = y;
 				x += m_width;
 				continue;
+
+			}else if(row[i] == '2')
+			{
+				m_start_position.m_x = x;
+				m_start_position.m_y = y;
 			}
+
+			std::cout << m_start_position.m_x << "/" << m_start_position.m_y << "\n";
+
 			std::map<char,Coords>::iterator it = m_tile_coords.find(row[i]);
 			if(it == m_tile_coords.end())
 			{
@@ -85,13 +94,9 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 			collider->m_position = Vector2(x,y);
 			collider->m_extension = Vector2(c.w,c.h);
 
-			GameObject *go = new GameObject(sprite, collider);
-			
+			GameObject *go = new GameObject(sprite, collider); 
 			go->SetPosition(Vector2(x,y));
 			gom->AttachObject(go);
-		
-
-
 
 			x += m_width;
 

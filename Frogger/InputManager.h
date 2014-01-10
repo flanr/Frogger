@@ -16,12 +16,19 @@ public:
 
 	bool IsDownOnce(int key) const;
 	bool IsDown(int key) const;
+	
 	void PostKeyboardUpdate();
+	
 	int GetX() const;
 	int GetY() const;
+	
 	bool IsDownOnce(EMouseButton button) const;
 	bool IsDown(EMouseButton button) const;
+	
 	void PostMouseUpdate();
+	void HandleInput();
+
+
 private:
 
 	bool m_current[256];
@@ -31,6 +38,7 @@ private:
 	bool m_previousMouse[MB_COUNT];
 	int m_x;
 	int m_y;
+
 
 };
 /*class Mouse {

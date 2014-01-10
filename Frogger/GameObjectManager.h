@@ -2,6 +2,16 @@
 
 #pragma once
 
+enum TYPE
+{
+	PLAYER,
+	WATER,
+	CAR,
+	LOG,
+	TURTLE,
+	GOAL
+};
+
 #include <vector>
 
 class GameState;
