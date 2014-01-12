@@ -54,6 +54,7 @@ void Slider::moveMouse(int x, int y)
 	}
 	else
 	{
+		selected = false;
 		hovered = false;
 	}
 
