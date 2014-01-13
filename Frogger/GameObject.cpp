@@ -12,11 +12,11 @@ GameObject::GameObject(Sprite *p_sprite, Collider *p_collider)
 	, m_collider(p_collider)
 {
 	m_collider->m_object = this;
-<<<<<<< HEAD
+
 	
-=======
+
 	//std::cout << this << "\n";
->>>>>>> f737d24b1058061876cbef5c2fdee62470393658
+
 }
 GameObject::~GameObject()
 {
