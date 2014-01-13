@@ -4,6 +4,7 @@
 #include "StateManager.h"
 #include "State.h"
 #include <iostream>
+#include <string>
 
 
 StateManager::StateManager()
@@ -22,6 +23,12 @@ StateManager::~StateManager()
 	}
 	m_states.clear();
 
+}
+
+std::string StateManager::CurrentState()
+{
+	
+	return m_current->GetCurrentState();
 }
 
 

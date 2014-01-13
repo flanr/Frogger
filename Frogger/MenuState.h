@@ -13,12 +13,13 @@ class MenuState : public State
 
 {
 public:
-	MenuState(SDL_Renderer* renderer, InputManager *input);
+	MenuState(SDL_Renderer* renderer, InputManager *input, Engine* engine);
 	bool Enter(Engine*);
 	void Exit();
 	bool Update(float p_deltatime);
 	void Draw();
 	std::string Next();
+	std::string GetCurrentState();
 	/**
 	Returns True if p_type == GameState
 	**/

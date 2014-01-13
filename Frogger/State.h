@@ -20,8 +20,10 @@ public:
 	virtual void Draw() = 0;
 	virtual std::string Next() = 0;
 	virtual bool IsType(const std::string &type) = 0;
-
+	virtual std::string GetCurrentState() = 0;
+	
 protected:
 		GameObjectManager *m_manager;
+		std::string m_Current_State;
 
 };

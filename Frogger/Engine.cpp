@@ -14,7 +14,7 @@
 #include "SoundClip.h"
 #include "SoundManager.h"
 #include "GameObjectManager.h"
-
+#include "StartState.h"
 
 
 Engine::Engine()
@@ -71,6 +71,7 @@ bool Engine::Initialize()
 		m_SoundMgr = new SoundManager();
 
 		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\03.Everyday(Netsky remix).flac");
+		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\01StereoLove(Original Mix).flac");
 		m_MusicClip->Play();
 
 	}
@@ -82,10 +83,11 @@ bool Engine::Initialize()
 	if(m_state_manager.m_current == nullptr)
 	{
 		m_state_manager.engine = this;
-		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_input));
+		m_state_manager.Attach(new MenuState(m_draw_manager->GetRenderer(),&m_input, this));
 		m_state_manager.Attach(new GameState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
+		m_state_manager.Attach(new StartState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
 
-		m_state_manager.SetState("GameState");
+		m_state_manager.SetState("StartState");
 	}
 
 	m_running = true;

@@ -3,7 +3,8 @@
 #include "InputManager.h"
 #include <SDL.h>
 #include "StateManager.h"
-
+#include "Slider.h"
+#include <vector>
 InputManager::InputManager() {
 	//Keyboard
 
@@ -25,21 +26,24 @@ InputManager::InputManager() {
 
 void InputManager::HandleInput(bool *m_running, InputManager *m_input, StateManager *m_state_manager)
 {
-
 	SDL_Event event;
-	while(SDL_PollEvent(&event))
+
+
+
+	while (SDL_PollEvent(&event))
 	{
-		if(event.type == SDL_QUIT)
+		/*if(event.type == SDL_QUIT)
 		{
-			*m_running=false;
+		*m_running=false;
 		}
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_k)
-			m_state_manager->ChangeState();
+		m_state_manager->ChangeState();
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
 		{
-			*m_running = false;
+		*m_running = false;
 		}
-		else if(event.type == SDL_KEYDOWN) {
+		else	*/		
+		if(event.type == SDL_KEYDOWN) {
 			int index = event.key.keysym.sym & 0xFF;
 			m_input->m_current[index] = true;
 		}
@@ -69,7 +73,13 @@ void InputManager::HandleInput(bool *m_running, InputManager *m_input, StateMana
 		};
 	}
 
+
+
 }
+
+
+
+
 
 bool InputManager::IsDownOnce(int key) const {
 	return m_current[key] && !m_previous[key];
