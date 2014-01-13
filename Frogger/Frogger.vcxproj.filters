@@ -93,6 +93,12 @@
     <ClCompile Include="StartState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bufferex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="constvar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -174,6 +180,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StartState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bufferex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constvar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

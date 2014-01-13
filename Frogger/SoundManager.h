@@ -19,8 +19,10 @@ public:
 	~SoundManager();
 	MusicClip* CreateMusic(std::string p_Path);
 	SoundClip* CreateSound(std::string p_Path);
-
+	void PlayNext();
+	MusicClip* GetMusicClip();
 private:
+	int m_current;
 	std::map<std::string, Mix_Music*> m_Music;
 	std::map<std::string, Mix_Chunk*> m_Sounds;
 	std::vector<MusicClip*> m_MusicClips;

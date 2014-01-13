@@ -11,9 +11,9 @@ MenuState::MenuState(SDL_Renderer* renderer,InputManager *input, Engine* engine)
 {
 	this->renderer = renderer;
 	m_input = input;
-	int menuX = engine->m_width/2;
-	int menuY = engine->m_height/2;
-	 menu = new Menu(engine->m_width/2-(menuX/2), engine->m_height/2-(menuY/2), menuX, menuY );
+	int menuX = engine->GetWidth()/2;
+	int menuY = engine->GetHeight()/2;
+	 menu = new Menu(engine->GetWidth()/2-(menuX/2), engine->GetWidth()/2-(menuY/2), menuX, menuY );
 	
 	// bool MenuStateRunning = false;
 }

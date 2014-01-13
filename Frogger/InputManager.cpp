@@ -32,17 +32,18 @@ void InputManager::HandleInput(bool *m_running, InputManager *m_input, StateMana
 
 	while (SDL_PollEvent(&event))
 	{
-		/*if(event.type == SDL_QUIT)
-		{
-		*m_running=false;
-		}
+		/*
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_k)
 		m_state_manager->ChangeState();
 		if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
 		{
 		*m_running = false;
 		}
-		else	*/		
+		else*/	
+		if(event.type == SDL_QUIT)
+		{
+			*m_running=false;
+		}
 		if(event.type == SDL_KEYDOWN) {
 			int index = event.key.keysym.sym & 0xFF;
 			m_input->m_current[index] = true;

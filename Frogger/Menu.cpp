@@ -26,7 +26,7 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	for(int n = 0; n < sliderCount; ++n){
 		sliders.push_back(new Slider(m_x + 20, m_y + offset*((n)) + offset/2 + (m_h/(sliderCount+1))*n, m_w - 40, m_h / (sliderCount + 1)));
 	}
-	sliders[0]->setValue(40);
+	sliders[0]->setValue(getMusicVolume());
 	setMusicVolume(sliders[0]->getValue());
 	//sliders[1]->setValue(66);
 

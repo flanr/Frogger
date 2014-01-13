@@ -14,15 +14,17 @@
 #include "SoundClip.h"
 #include "SoundManager.h"
 #include "GameObjectManager.h"
+#include "GlobalGameConfig.h"
 #include "StartState.h"
+#include "constvar.h"
 
 
 Engine::Engine()
 {
+
 	m_window=nullptr;
 	m_draw_manager=nullptr;
-	m_width = 0;
-	m_height = 0;
+
 	m_running = false;
 
 	m_deltatime = 0.01f;
@@ -31,6 +33,9 @@ Engine::Engine()
 	m_SoundMgr = nullptr;
 	m_MusicClip = nullptr;
 	m_SoundClip = nullptr;
+	Config = new cvarList("Configuration");
+	Config->load();
+
 }
 Engine::~Engine()
 {
@@ -40,23 +45,40 @@ Engine::~Engine()
 
 bool Engine::Initialize()
 {
-	m_width = 720;
-	m_height = 720;
-
+	
+	char buffer[1024];
+	sprintf(buffer, "%04d", 720);
+	//Config->get("VariableName")->getData() returns data in that variable
+	
+	if(!Config->get("ResX"))
+	{
+		Config->set((char*)"ResX",buffer, strlen(buffer));
+		Config->save();
+	}
+	if(!Config->get("ResY"))
+	{
+		Config->set((char*)"ResY",buffer, strlen(buffer));
+		Config->save();
+	}
+	if(!Config->get("Music Vol")){
+		Config->set("Music Vol", "50", strlen("50"));
+	}
+	setMusicVolume(atoi(Config->get("Music Vol")->getData()));
+	
 	// Start SDL
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	if( SDL_Init(SDL_INIT_AUDIO) < 0 ) exit(1);
 	m_window = SDL_CreateWindow("Frogger",
 		SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
-		m_width,m_height,
+		GetWidth(),GetHeight(),
 		SDL_WINDOW_OPENGL);
 	if(m_window == nullptr)
 	{
 		return false;
 	}
 	m_draw_manager = new DrawManager;
-	if (!m_draw_manager->Initialize(m_window,m_width,m_height))
+	if (!m_draw_manager->Initialize(m_window,GetWidth(),GetHeight()))
 	{
 		return false;
 	}
@@ -110,7 +132,10 @@ void Engine::Run()
 	while(m_running)
 	{
 
-
+		if (m_input.IsDownOnce(SDLK_n))
+		{
+			m_SoundMgr->PlayNext();
+		}
 		m_draw_manager->Clear();
 		m_state_manager.Update(m_deltatime);
 		m_state_manager.Draw();
@@ -119,7 +144,7 @@ void Engine::Run()
 		m_input.PostMouseUpdate();
 
 		m_MusicClip->Volume();
-		//UpdateDeltatime();
+		UpdateDeltatime();
 		m_input.HandleInput(&m_running, &m_input, &m_state_manager);
 		SDL_Delay(10);
 	}
@@ -142,6 +167,11 @@ void Engine::Cleanup()
 		delete m_draw_manager;
 		m_draw_manager=nullptr;
 	}
+
+	char bacon[1024];
+	sprintf(bacon, "%d", getMusicVolume());
+	Config->set("Music Vol", bacon, strlen(bacon));
+	Config->save();
 	//if (m_sprite_manager != nullptr)
 	//{
 	//	m_sprite_manager->Cleanup();
@@ -158,12 +188,12 @@ void Engine::Cleanup()
 //	return m_window; ///////
 //}
 //
-//int Engine::GetWidth()
-//{
-//	return m_width;
-//}
-//
+int Engine::GetWidth()
+{
+	return atoi(Config->get("ResX")->getData());
+}
+
 int Engine::GetHeight()
 {
-	return m_height;
+	return atoi(Config->get("ResY")->getData());
 }

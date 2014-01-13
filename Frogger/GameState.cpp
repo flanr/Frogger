@@ -129,6 +129,12 @@ void GameState::HandleInput()
 	{
 		m_engine->m_state_manager.SetState("MenuState");
 	}
+	if (m_input->IsDownOnce(SDLK_ESCAPE))
+	{
+		m_engine->m_running = false;
+	}
+
+	
 }
 
 void GameState::Draw()
