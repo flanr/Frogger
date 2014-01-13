@@ -19,7 +19,8 @@ public:
 	Collider *CreateCollider(Vector2 &position, Vector2 &extension);
 	void DestroyCollider(Collider *collider);
 
-private:
+protected:
+//	int amount_of_objects;
 	std::vector<Collider*> m_object;
 
 };

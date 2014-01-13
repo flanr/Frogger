@@ -18,6 +18,7 @@
 #include "Sprite.h"
 #include "Collider.h"
 
+
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;
@@ -69,6 +70,7 @@ bool GameState::Enter(Engine* engine)
 		m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
 	}
 
+
 	if (m_sprite == nullptr)
 	{
 		m_sprite = m_sprite_manager->Load("hero.png", 0, 0, 70, 70);
@@ -110,7 +112,13 @@ bool GameState::Update(float p_deltatime)
 {
 	m_player->Update(p_deltatime);
 	m_water->Update(p_deltatime);
+
+	m_collmgr->CheckCollision();
+
+	
+
 	HandleInput();
+
 
 
 	return true;
