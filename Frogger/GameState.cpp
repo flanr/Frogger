@@ -36,6 +36,7 @@ std::string GameState::GetCurrentState()
 bool GameState::Enter(Engine* engine)
 {
 	m_Current_State = "GameState";
+	m_engine = engine;
 	std::cout << "GameState::Enter" << std::endl;
 	// GameStateRunning = true:
 	m_draw_manager = engine->m_draw_manager;
@@ -50,14 +51,11 @@ bool GameState::Enter(Engine* engine)
 		return false;
 	}
 
-	m_levelbackground = new LevelBackground;
 	m_level = new Level;
+	m_levelbackground = new LevelBackground;
 	m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
-
 	m_level->Load("../data/levels/level.txt",m_sprite_manager);
-
 	Sprite* sprite = m_sprite_manager->Load("hero.png", 0, 0, 70, 70);
-
 	Collider* collider = new Collider(
 		m_level->GetPlayerStartPosition(), 
 		Vector2(70.0f, 70.0f));
@@ -81,7 +79,15 @@ bool GameState::Update(float p_deltatime)
 {
 	m_player->Update(p_deltatime);
 	m_water->Update(p_deltatime);
+HandleInput();
 	return true;
+}
+void GameState::HandleInput()
+{
+	if (m_input->IsDownOnce(SDLK_k))
+	{
+		m_engine->m_state_manager.SetState("MenuState");
+	}
 }
 
 void GameState::Draw()

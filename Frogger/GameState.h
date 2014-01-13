@@ -14,6 +14,7 @@ class SpriteManager;
 class PlayerObject;
 class GameObject;
 class Water;
+class Engine;
 
 
 class GameState : public State
@@ -27,6 +28,9 @@ public:
 	void Draw();
 	std::string Next();
 	std::string GetCurrentState();
+	void HandleInput();
+
+
 	/**
 	Returns True if p_type == GameState
 	**/
@@ -40,11 +44,10 @@ private:
 	SpriteManager* m_sprite_manager;
 	Level* m_level;
 	LevelBackground *m_levelbackground;
-
+	Engine* m_engine;
 
 	//Ladbon
 	PlayerObject* m_player;
 	InputManager *m_input;
 	Water *m_water;
-	Engine *m_engine;
 };

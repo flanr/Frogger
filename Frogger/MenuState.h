@@ -7,6 +7,7 @@
 #include "Menu.h"
 
 class InputManager;
+class Engine;
 
 
 class MenuState : public State
@@ -24,12 +25,13 @@ public:
 	Returns True if p_type == GameState
 	**/
 	bool IsType(const std::string &p_type);
+	void HandleInput();
 
 private:
 	bool m_done;
 	InputManager *m_input;
 
-
+	Engine* m_engine;
 	std::string m_state_next;
 	SDL_Renderer* renderer;
 	Menu* menu;
