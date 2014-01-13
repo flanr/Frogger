@@ -22,9 +22,9 @@ public:
 	Level();
 	~Level();
 
+	Vector2 GetStartPosition(GameObject *object);
 	bool Load(const std::string &p_filename, SpriteManager *p_sprite_manager);
 	void Draw(DrawManager *p_draw_manager);
-	Vector2 GetPlayerStartPosition();
 private:
 	std::string m_spritemap_filename;
 	unsigned int m_width;

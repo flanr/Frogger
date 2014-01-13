@@ -10,7 +10,7 @@ class GameObject
 {
 public:
 	GameObject(Sprite *sprite=nullptr, Collider *collider = nullptr);
-	virtual TYPE GetID();
+	virtual GameObject_Type GetType();
 
 	const Vector2  &GetPosition() const;
 	void SetPosition(const Vector2 &p_position);

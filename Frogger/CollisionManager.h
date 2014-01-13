@@ -6,19 +6,21 @@
 #include <vector>
 
 class GameObject;
+class Collider;
+class Vector2;
 
 class CollisionManager
 {
 public:
-	CollisionManager(std::vector<GameObject*> *m_object);
+	CollisionManager();
 	~CollisionManager();
 
-	bool Collided();
-	void HasCollided(GameObject *Object1, GameObject *Object2);
-
+	void CheckCollision();
+	Collider *CreateCollider(Vector2 &position, Vector2 &extension);
+	void DestroyCollider(Collider *collider);
 
 private:
-	std::vector<GameObject*> m_object;
+	std::vector<Collider*> m_object;
 
 };
 

@@ -26,3 +26,4 @@ private:
 	std::vector<MusicClip*> m_MusicClips;
 	std::vector<SoundClip*> m_SoundClips;
 };
+// Mix_ChannelFinished

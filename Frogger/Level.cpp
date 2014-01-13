@@ -83,7 +83,7 @@ bool Level::Load(const std::string &p_filename, SpriteManager *p_sprite_manager)
 				m_start_position.m_y = y;
 			}
 
-			std::cout << m_start_position.m_x << "/" << m_start_position.m_y << "";
+			//std::cout << m_start_position.m_x << "/" << m_start_position.m_y << "";
 
 			std::map<char,Coords>::iterator it = m_tile_coords.find(row[i]);
 			if(it == m_tile_coords.end())
@@ -127,7 +127,7 @@ void Level::Draw(DrawManager *p_draw_manager)
 	gom->DrawObject(p_draw_manager);
 }
 
-Vector2 Level::GetPlayerStartPosition()
+Vector2 Level::GetStartPosition(GameObject *object)
 {
 	return m_start_position;
 }
