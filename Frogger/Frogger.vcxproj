@@ -108,6 +108,7 @@
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="StartState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Water.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlobalGameConfig.h" />
+    <ClInclude Include="StartState.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />

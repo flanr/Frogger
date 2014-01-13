@@ -26,6 +26,7 @@ public:
 	bool Update(float p_deltatime);
 	void Draw();
 	std::string Next();
+	std::string GetCurrentState();
 	/**
 	Returns True if p_type == GameState
 	**/

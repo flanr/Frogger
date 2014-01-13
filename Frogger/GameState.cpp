@@ -28,9 +28,14 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	m_manager = manager;
 	// bool GameStateRunning = false;
 }
+std::string GameState::GetCurrentState()
+{
+	return m_Current_State;
+}
 
 bool GameState::Enter(Engine* engine)
 {
+	m_Current_State = "GameState";
 	std::cout << "GameState::Enter" << std::endl;
 	// GameStateRunning = true:
 	m_draw_manager = engine->m_draw_manager;

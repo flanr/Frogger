@@ -57,3 +57,4 @@ void MusicClip::Volume()
 {
 	Mix_VolumeMusic(getMusicVolume());
 }
+

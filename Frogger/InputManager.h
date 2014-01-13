@@ -29,7 +29,7 @@ public:
 	
 	void PostMouseUpdate();
 	void HandleInput(bool *m_running, InputManager *m_input, StateManager *m_state_manager);
-
+	
 
 private:
 

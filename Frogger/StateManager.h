@@ -3,6 +3,7 @@
 
 #pragma once
 #include <vector>
+#include <string>
 
 class State;
 class InputManager;
@@ -14,6 +15,7 @@ public:
 	StateManager();
 	~StateManager();
 
+	std::string CurrentState();
 	/**
 	Attaches new state
 	**/

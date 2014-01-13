@@ -20,7 +20,7 @@ Slider::Slider(int x, int y, int w, int h)
 	sliderBox.h = h;
 	sliderBox.w = w;
 
-	sw = w-w/5; /// Why ?
+	sw = w-w/5;
 
 	FullSlider.y = y+h/3;
 	FullSlider.h = h/3;

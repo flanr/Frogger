@@ -5,7 +5,7 @@
 #include "Menu.h"
 #include "GlobalGameConfig.h"
 #include "Slider.h"
-
+#include "InputManager.h"
 
 Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 {
@@ -20,7 +20,7 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	bgrect.y = m_y;
 	bgrect.h = m_h;
 	bgrect.w = m_w;
-	int sliderCount = 4;
+	int sliderCount = 1;
 	int offset = (m_h/sliderCount+1)/(sliderCount+1);
 	printf("%d", offset);
 	for(int n = 0; n < sliderCount; ++n){
@@ -28,7 +28,7 @@ Menu::Menu(int m_x, int m_y, int m_w, int m_h)
 	}
 	sliders[0]->setValue(40);
 	setMusicVolume(sliders[0]->getValue());
-	sliders[1]->setValue(66);
+	//sliders[1]->setValue(66);
 
 
 	/*sliders.push_back(new Slider(m_x + 20, m_y + offset, m_w -40, m_h / (sliderCount+1))); // Pushback Slider* 
@@ -80,51 +80,44 @@ void Menu::Draw(SDL_Renderer* renderer)
 
 }
 
-void Menu::HandleInput()
+void Menu::HandleInput(InputManager *input)
 {
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		//keypress
-		if (event.type == SDL_KEYDOWN)
-		{
-			if (event.key.keysym.sym == 'k')
-			{
 
-				running = false;
-			}
+	{
+
+
+
+		//keypress
+		if (input->IsDownOnce(SDLK_k) == 'k')
+		{
+
+			running = false;
 		}
 		//Mouse
-		if (event.type == SDL_MOUSEMOTION)
+
+		for (Slider* s : sliders)
 		{
-			mouseX = event.motion.x;
-			mouseY = event.motion.y;
-			for (Slider* s : sliders)
+			s->moveMouse(input->GetX(), input->GetY());
+		}
+
+		//if (event.type == SDL_MOUSEBUTTONDOWN)
+
+		if (input->IsDown(MB_LEFT))
+		{
+			for(Slider* s : sliders)
 			{
-				s->moveMouse(mouseX, mouseY);
+				s->mouseDown(input->GetX(),input->GetY());
 			}
 
 		}
-		if (event.type == SDL_MOUSEBUTTONDOWN)
-		{
-			if (event.button.button == SDL_BUTTON_LEFT)
-			{
-				for(Slider* s : sliders)
-				{
-					s->mouseDown(mouseX,mouseY);
-				}
 
-			}
-		}
-		if (event.type == SDL_MOUSEBUTTONUP)
-		{
-			if (event.button.button == SDL_BUTTON_LEFT)
-			{
-				for(Slider* s : sliders)
-				{
-					s->mouseUp();
-				}
+		//if (event.type == SDL_MOUSEBUTTONUP)
 
+		if (!input->IsDown(MB_LEFT))
+		{
+			for(Slider* s : sliders)
+			{
+				s->mouseUp();
 			}
 		}
 	}
