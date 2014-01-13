@@ -10,7 +10,7 @@ class InputManager;
 
 
 class MenuState : public State
-
+	//FLAN
 {
 public:
 	MenuState(SDL_Renderer* renderer, InputManager *input, Engine* engine);
