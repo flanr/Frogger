@@ -2,13 +2,17 @@
 
 #include "GameObject.h"
 #include <iostream>
+#include "Collider.h"
+#include <iostream>
+
 
 GameObject::GameObject(Sprite *p_sprite, Collider *p_collider)
 	: m_position(0.0f, 0.0f)
 	, m_sprite(p_sprite)
 	, m_collider(p_collider)
 {
-
+	m_collider->m_object = this;
+	std::cout << this << "\n";
 }
 GameObject::~GameObject()
 {
@@ -48,7 +52,7 @@ Collider* GameObject::GetCollider()
 	return m_collider;
 }
 
-TYPE GameObject::GetID()
+GameObject_Type GameObject::GetType()
 {
 		return GAMEOBJ;
 }

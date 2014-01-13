@@ -4,6 +4,8 @@
 #pragma once
 #include "Vector2.h"
 
+class GameObject;
+
 class Collider
 {
 public:
@@ -13,6 +15,7 @@ public:
 
 	bool Overlap(const Collider &p_other, Vector2 &p_offset);
 
+	GameObject *m_object; //min collider en pekare till ett gameobject
 	Vector2 m_position;
 	Vector2 m_extension;
 private:

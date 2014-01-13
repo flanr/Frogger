@@ -6,6 +6,7 @@
 #include <SDL.h>
 #include "InputManager.h"
 
+class CollisionManager;
 class DrawManager;
 class Level;
 class LevelBackground;
@@ -46,4 +47,5 @@ private:
 	InputManager *m_input;
 	Water *m_water;
 	Engine *m_engine;
+	CollisionManager *m_collmgr;
 };

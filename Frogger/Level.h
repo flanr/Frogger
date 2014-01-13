@@ -24,7 +24,7 @@ public:
 
 	bool Load(const std::string &p_filename, SpriteManager *p_sprite_manager);
 	void Draw(DrawManager *p_draw_manager);
-	Vector2 GetPlayerStartPosition();
+	Vector2 GetStartPosition(GameObject *m_object);
 private:
 	std::string m_spritemap_filename;
 	unsigned int m_width;

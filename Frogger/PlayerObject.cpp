@@ -14,10 +14,10 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
-//	m_current_animation = nullptr;7
+	//	m_current_animation = nullptr;7
 }
 
-TYPE PlayerObject::GetID()
+GameObject_Type PlayerObject::GetType()
 {
 	return PLAYER;
 }
@@ -51,5 +51,5 @@ void PlayerObject::Update(float deltatime)
 }
 //void PlayerObject::AddAnimation(const std::string &name, AnimatedSprite *sprite)
 //{
-	//m_animation.insert(std::pair<std::string, AnimatedSprite*>(name, sprite));	
+//m_animation.insert(std::pair<std::string, AnimatedSprite*>(name, sprite));	
 //}

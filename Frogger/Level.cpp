@@ -127,7 +127,7 @@ void Level::Draw(DrawManager *p_draw_manager)
 	gom->DrawObject(p_draw_manager);
 }
 
-Vector2 Level::GetPlayerStartPosition()
+Vector2 Level::GetStartPosition(GameObject *object)
 {
 	return m_start_position;
 }

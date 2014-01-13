@@ -14,6 +14,7 @@
 #include "GameObject.h"
 #include "GameObjectManager.h"
 #include "Water.h"
+#include "CollisionManager.h"
 
 
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
@@ -24,6 +25,7 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	m_player = nullptr;
 	m_water = nullptr;
 	m_input = input;
+	m_collmgr = nullptr;
 
 	m_manager = manager;
 	// bool GameStateRunning = false;
@@ -52,16 +54,14 @@ bool GameState::Enter(Engine* engine)
 	m_level->Load("../data/levels/level.txt",m_sprite_manager);
 
 	Sprite* sprite = m_sprite_manager->Load("hero.png", 0, 0, 70, 70);
+	m_collmgr = new CollisionManager;
 
-	Collider* collider = new Collider(
-		m_level->GetPlayerStartPosition(), 
-		Vector2(70.0f, 70.0f));
 
-	m_player = new PlayerObject(m_input, sprite, collider);
-	m_player->SetPosition(m_level->GetPlayerStartPosition());
+	m_player = new PlayerObject(m_input, sprite, m_collmgr->CreateCollider(m_level->GetStartPosition(m_player), Vector2(70.0f, 70.0f)));
+	m_player->SetPosition(m_level->GetStartPosition(m_player));
 
-	m_water = new Water(nullptr, collider);
-	m_water->SetPosition(m_level->GetPlayerStartPosition());
+	m_water = new Water(nullptr, m_collmgr->CreateCollider(m_level->GetStartPosition(m_water), Vector2(70.0f, 70.0f)));
+	m_water->SetPosition(m_level->GetStartPosition(m_water));
 
 	std::cout << "GameState now running" << std::endl;
 	return false;
@@ -76,6 +76,9 @@ bool GameState::Update(float p_deltatime)
 {
 	m_player->Update(p_deltatime);
 	m_water->Update(p_deltatime);
+
+
+
 	return true;
 }
 

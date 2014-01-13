@@ -11,9 +11,10 @@ Water::Water(Sprite* sprite, Collider* collider)
 
 void Water::Update(float deltatime)
 {
-	
-}
-TYPE Water::GetID()
+
+}	
+
+GameObject_Type Water::GetType()
 {
 	return WATER;
 }

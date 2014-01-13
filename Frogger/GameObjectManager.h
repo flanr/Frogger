@@ -2,8 +2,7 @@
 
 #pragma once
 
-enum TYPE
-{
+enum GameObject_Type{
 	GAMEOBJ,
 	PLAYER,
 	WATER,
@@ -11,7 +10,7 @@ enum TYPE
 	LOG,
 	TURTLE,
 	GOAL,
-	BACKGROUND
+	BACKGROUND 
 };
 
 #include <vector>

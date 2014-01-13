@@ -28,9 +28,6 @@ public:
 	**/
 	void Run();
 	/**
-	Updating Input?
-	**/
-	void UpdateEvents();
 	/**
 	Gets rid of all the Pointers in a proper way
 	**/

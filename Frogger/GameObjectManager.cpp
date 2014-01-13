@@ -25,7 +25,7 @@ void GameObjectManager::Update(float deltatime)
 //attach 
 void GameObjectManager::AttachObject(GameObject *object)
 {
-	
+
 	m_gameobject.push_back(object);
 }
 //detach
