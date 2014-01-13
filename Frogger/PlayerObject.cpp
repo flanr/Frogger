@@ -14,7 +14,7 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
-	//	m_current_animation = nullptr;7
+	//	m_current_animation = nullptr;
 }
 
 GameObject_Type PlayerObject::GetType()

@@ -26,7 +26,6 @@ public:
 	~GameObject();
 
 protected:
-
 	Vector2 m_position;
 	Sprite *m_sprite;
 	Collider *m_collider;

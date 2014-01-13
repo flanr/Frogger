@@ -87,7 +87,7 @@ bool Engine::Initialize()
 		m_state_manager.Attach(new GameState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
 		m_state_manager.Attach(new StartState(m_draw_manager->GetRenderer(),&m_input, gameobjectmanager));
 
-		m_state_manager.SetState("StartState");
+		m_state_manager.SetState("GameState");
 	}
 
 	m_running = true;

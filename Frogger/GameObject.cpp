@@ -12,11 +12,11 @@ GameObject::GameObject(Sprite *p_sprite, Collider *p_collider)
 	, m_collider(p_collider)
 {
 	m_collider->m_object = this;
-	std::cout << this << "\n";
+	
 }
 GameObject::~GameObject()
 {
-
+	
 }
 void GameObject::Update(float deltatime)
 {
