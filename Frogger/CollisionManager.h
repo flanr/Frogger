@@ -20,6 +20,7 @@ public:
 	void DestroyCollider(Collider *collider);
 
 protected:
+//	int amount_of_objects;
 	std::vector<Collider*> m_object;
 
 };

@@ -10,6 +10,7 @@
 
 CollisionManager::CollisionManager()
 {
+	//amount_of_objects = 0;
 }
 
 
@@ -46,16 +47,19 @@ void CollisionManager::CheckCollision()
 	};
 	if(count > 0) {
 		offset /= (float)count;
-		//printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
+		printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
 		offset.m_x=floorf(offset.m_x);
 		offset.m_y=floorf(offset.m_y);
 	};
 }
 Collider *CollisionManager::CreateCollider(Vector2 &position, Vector2 &extension)
 {
+
 	Collider *collider = new Collider(position, extension);
+//	m_object.at(amount_of_objects).push_back(collider);
 	m_object.push_back(collider);
-	std::cout << "Collider: " << collider << "\n";
+	//std::cout << "Collider: " << collider << amount_of_objects << "\n";
+	//amount_of_objects++;
 	return collider;
 
 }
