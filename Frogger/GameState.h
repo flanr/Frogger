@@ -11,11 +11,15 @@ class DrawManager;
 class Level;
 class LevelBackground;
 class SpriteManager;
+class Sprite;
+class Collider;
+
 //Ladbon
 class PlayerObject;
 class GameObject;
 class Water;
 class Engine;
+
 
 
 class GameState : public State
@@ -46,10 +50,12 @@ private:
 	Level* m_level;
 	LevelBackground *m_levelbackground;
 	Engine* m_engine;
-
+	Sprite* m_sprite;
+	Collider* m_collider;
 	//Ladbon
 	PlayerObject* m_player;
 	InputManager *m_input;
 	Water *m_water;
 	CollisionManager *m_collmgr;
+	
 };

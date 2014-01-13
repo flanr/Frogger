@@ -15,7 +15,8 @@
 #include "GameObjectManager.h"
 #include "Water.h"
 #include "CollisionManager.h"
-
+#include "Sprite.h"
+#include "Collider.h"
 
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
@@ -26,7 +27,9 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	m_water = nullptr;
 	m_input = input;
 	m_collmgr = nullptr;
-
+	m_collider = nullptr;
+	m_sprite_manager = nullptr;
+	m_sprite = nullptr;
 	m_manager = manager;
 	// bool GameStateRunning = false;
 }
@@ -47,34 +50,53 @@ bool GameState::Enter(Engine* engine)
 	{
 	return false;	
 	}*/
-	m_sprite_manager = new SpriteManager(m_draw_manager);
-	if(!m_sprite_manager ->Initialize("../data/sprites/"))
+	if (m_sprite_manager == nullptr)
 	{
-		return false;
+		m_sprite_manager = new SpriteManager(m_draw_manager);
+		if(!m_sprite_manager ->Initialize("../data/sprites/"))
+		{
+			return false;
+		}
+	}
+	if (m_level == nullptr)
+	{
+		m_level = new Level;
+		m_level->Load("../data/levels/level.txt",m_sprite_manager);
+	}
+	if (m_levelbackground)
+	{
+		m_levelbackground = new LevelBackground;
+		m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
 	}
 
-	m_level = new Level;
-	m_levelbackground = new LevelBackground;
-	
-	m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
-	
-	m_level->Load("../data/levels/level.txt",m_sprite_manager);
-	std::cout << " ____________________" << std::endl;
-	Sprite* sprite = m_sprite_manager->Load("hero.png", 0, 0, 70, 70);
+	if (m_sprite == nullptr)
+	{
+		m_sprite = m_sprite_manager->Load("hero.png", 0, 0, 70, 70);
+	}
 
-	Collider* collider = new Collider(
-		m_level->GetStartPosition(m_player), 
-		Vector2(70.0f, 70.0f));
+	if(m_collider == nullptr)
+	{
+		m_collider = new Collider(
+			m_level->GetStartPosition(m_player), 
+			Vector2(70.0f, 70.0f));
+	}
+	if (m_collmgr ==nullptr)
+	{
+		m_collmgr = new CollisionManager;
+	}
 
-	m_collmgr = new CollisionManager;
 
+	if (m_player == nullptr)
+	{
+		m_player = new PlayerObject(m_input, m_sprite, m_collmgr->CreateCollider(m_level->GetStartPosition(m_player), Vector2(70.0f, 70.0f)));
+		m_player->SetPosition(m_level->GetStartPosition(m_player));
+	}
 
-	m_player = new PlayerObject(m_input, sprite, m_collmgr->CreateCollider(m_level->GetStartPosition(m_player), Vector2(70.0f, 70.0f)));
-	m_player->SetPosition(m_level->GetStartPosition(m_player));
-
-	m_water = new Water(nullptr, m_collmgr->CreateCollider(m_level->GetStartPosition(m_water), Vector2(70.0f, 70.0f)));
-	m_water->SetPosition(m_level->GetStartPosition(m_water));
-
+	if (m_water == nullptr)
+	{
+		m_water = new Water(nullptr, m_collmgr->CreateCollider(m_level->GetStartPosition(m_water), Vector2(70.0f, 70.0f)));
+		m_water->SetPosition(m_level->GetStartPosition(m_water));
+	}
 	std::cout << "GameState now running" << std::endl;
 	return false;
 }
