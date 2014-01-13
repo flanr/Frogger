@@ -5,7 +5,7 @@
 #include <iostream>
 #include "GameObjectManager.h"
 #include "InputManager.h"
-
+#include "Engine.h"
 
 StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
@@ -21,6 +21,7 @@ StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectMa
 
 bool StartState::Enter(Engine* engine)
 {
+	m_engine =engine;
 	m_Current_State = "StartState";
 	std::cout << "StartState now running" << std::endl;
 	return false;
@@ -34,6 +35,14 @@ void StartState::Exit()
 {
 
 }
+void StartState::HandleInput()
+{
+	if (m_input->IsDownOnce(SDLK_k))
+	{
+		m_engine->m_state_manager.SetState("GameState");
+	}
+}
+
 
 bool StartState::Update(float p_deltatime)
 {
@@ -41,7 +50,7 @@ bool StartState::Update(float p_deltatime)
 	//menu->Run(renderer);
 
 	SDL_Delay(10);
-
+	HandleInput();
 	//SDL_RenderPresent(renderer);
 	//m_manager->Update(p_deltatime);
 

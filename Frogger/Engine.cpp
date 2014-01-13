@@ -34,7 +34,7 @@ Engine::Engine()
 }
 Engine::~Engine()
 {
-
+	Cleanup();
 }
 
 
@@ -119,7 +119,7 @@ void Engine::Run()
 		m_input.PostMouseUpdate();
 
 		m_MusicClip->Volume();
-		UpdateDeltatime();
+		//UpdateDeltatime();
 		m_input.HandleInput(&m_running, &m_input, &m_state_manager);
 		SDL_Delay(10);
 	}

@@ -20,6 +20,7 @@ MenuState::MenuState(SDL_Renderer* renderer,InputManager *input, Engine* engine)
 
 bool MenuState::Enter(Engine* engine)
 {
+	m_engine = engine;
 	m_Current_State = "MenuState";
 	// MenuStateRunning = true:
 	std::cout << "MenuState now running" << std::endl;
@@ -42,6 +43,7 @@ bool MenuState::Update(float p_deltatime)
 	//menu->Run(renderer);
 
 	menu->HandleInput(m_input); ///////////////
+	HandleInput();
 	menu->UpdateVolume();
 	SDL_Delay(10);
 	//SDL_RenderPresent(renderer);
@@ -50,6 +52,14 @@ bool MenuState::Update(float p_deltatime)
 	return true;
 
 }
+void MenuState::HandleInput()
+{
+	if (m_input->IsDownOnce(SDLK_k))
+	{
+		m_engine->m_state_manager.SetState("GameState");
+	}
+}
+
 
 void MenuState::Draw()
 {
