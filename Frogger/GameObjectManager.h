@@ -18,6 +18,7 @@ enum GameObject_Type{
 class GameState;
 class GameObject;
 class DrawManager;
+class Engine;
 
 class GameObjectManager
 {

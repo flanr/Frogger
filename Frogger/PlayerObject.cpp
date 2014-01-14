@@ -14,6 +14,7 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
+
 	//	m_current_animation = nullptr;
 }
 
@@ -47,6 +48,10 @@ void PlayerObject::Update(float deltatime)
 	}
 
 	m_position += m_velocity;
+
+	if(HasCollider()) {
+		m_collider->m_position = m_position;
+	};
 
 }
 //void PlayerObject::AddAnimation(const std::string &name, AnimatedSprite *sprite)

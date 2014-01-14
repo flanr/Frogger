@@ -44,9 +44,11 @@ public:
 	DrawManager *m_draw_manager;
 	SpriteManager *m_sprite_manager;
 	StateManager m_state_manager;
-
-	GameObjectManager *menuobjectmanager;
+	
+	
 	GameObjectManager *gameobjectmanager;
+
+
 
 	cvarList* Config;
 

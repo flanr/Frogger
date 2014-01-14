@@ -17,7 +17,7 @@ Collider::~Collider()
 
 
 Collider::Collider(const Vector2 &p_position, const Vector2 &p_extension)
-	: m_position(p_extension)
+	: m_position(p_position)
 	, m_extension(p_extension)
 {
 

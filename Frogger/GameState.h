@@ -54,8 +54,9 @@ private:
 	Collider* m_collider;
 	//Ladbon
 	PlayerObject* m_player;
-	InputManager *m_input;
 	Water *m_water;
+	InputManager *m_input;
 	CollisionManager *m_collmgr;
+	GameObjectManager *m_manager;
 	
 };

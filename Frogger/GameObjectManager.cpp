@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "DrawManager.h"
 #include "Collider.h"
+#include <iostream>
 
 GameObjectManager::GameObjectManager()
 {
@@ -20,6 +21,7 @@ void GameObjectManager::Update(float deltatime)
 	{
 		GameObject *obj = *it;
 		obj->Update(deltatime);
+		
 	}
 }
 //attach 
@@ -27,6 +29,7 @@ void GameObjectManager::AttachObject(GameObject *object)
 {
 
 	m_gameobject.push_back(object);
+
 }
 //detach
 void GameObjectManager::DetachObject(GameObject *object)
