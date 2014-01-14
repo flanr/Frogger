@@ -120,10 +120,10 @@ cvarList::~cvarList(){
 }
 
 
-cvarElement* cvarList::get(char* navn){
+cvarElement* cvarList::get(char* name){
 	lock();
 	for(Iter = elements.begin(); Iter != elements.end(); Iter++){
-		if(!strcmp(navn, (*Iter)->name)){
+		if(!strcmp(name, (*Iter)->name)){
 			//log("Found element :)");
 			unlock();
 			return (*Iter);
@@ -135,12 +135,12 @@ cvarElement* cvarList::get(char* navn){
 }
 
 
-cvarElement* cvarList::set(char* navn, char* content, esize contentSize){
+cvarElement* cvarList::set(char* name, char* content, esize contentSize){
 	cvarElement* temp = 0;
 	
-	if((temp = get(navn)) == NULL){
+	if((temp = get(name)) == NULL){
 		temp = new cvarElement(cID++);
-		temp->setName(navn, strlen(navn));
+		temp->setName(name, strlen(name));
 		lock();
 		elements.push_back(temp);
 		unlock();
@@ -153,13 +153,13 @@ cvarElement* cvarList::set(char* navn, char* content, esize contentSize){
 }
 
 
-cvarElement* cvarList::append(char* navn, char* content, esize contentSize){
+cvarElement* cvarList::append(char* name, char* content, esize contentSize){
 	cvarElement* temp = 0;
 	
 	
-	if((temp = get(navn)) == NULL){
+	if((temp = get(name)) == NULL){
 		cvarElement* temp = new cvarElement(cID++);
-		temp->setName(navn, strlen(navn)+1);
+		temp->setName(name, strlen(name)+1);
 		lock();
 		elements.push_back(temp);
 		unlock();
