@@ -13,6 +13,7 @@
 #include "Water.h"
 #include "PlayerObject.h"
 #include "InputManager.h"
+#include "Car.h"
 
 Level::Level()
 {
@@ -23,6 +24,7 @@ Level::Level()
 	m_player = nullptr;
 	m_sprite = nullptr;
 	m_water = nullptr;
+	m_car = nullptr;
 	m_player_start_position = Vector2(0.0f, 0.0f);
 	m_water_start_position = Vector2(0.0f, 0.0f);
 }
@@ -106,7 +108,7 @@ bool Level::Load(const std::string &p_filename
 				}
 			}else if(row[i] == '2')
 			{
-				
+
 				m_water_start_position.m_x = x+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
 				m_water_start_position.m_y = y+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
 
@@ -118,7 +120,24 @@ bool Level::Load(const std::string &p_filename
 				m_manager->AttachObject(m_water);
 				x+= m_width;
 				continue;
+			}else if(row[i] == '3')
+			{
+
+				m_car_start_position.m_x = x+1;
+				m_car_start_position.m_y = y+1;
+				
+				m_car = new Car(m_sprite = p_sprite_manager->Load("hero.png", 0, 0, 70, 70)
+					          , m_collmgr->CreateCollider(m_car_start_position, Vector2(68.0f, 68.0f)));
+
+				m_car->SetPosition(m_car_start_position);
+				m_car->SetStartPosition(m_car_start_position); 
+
+				m_manager->AttachObject(m_car);
+				x+= m_width;
+				continue;
+
 			}
+
 
 			std::map<char,Coords>::iterator it = m_tile_coords.find(row[i]);
 			if(it == m_tile_coords.end())
@@ -149,11 +168,4 @@ Level::~Level()
 void Level::Draw(DrawManager *p_draw_manager)
 {
 	gom->DrawObject(p_draw_manager);
-
-	/*	p_draw_manager->Draw(
-	m_player->GetSprite(),
-	m_player->GetPosition().m_x,
-	m_player->GetPosition().m_y);
-	p_draw_manager->Present();
-	*/
 }

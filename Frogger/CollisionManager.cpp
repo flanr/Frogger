@@ -50,11 +50,16 @@ void CollisionManager::CheckCollision()
 
 				if(m_object.at(z)->m_xobject->GetType() == PLAYER)
 				{
-					int sven = 0;
+					
 					if(off.m_x < 1.0 || off.m_x > 1.0 || off.m_y > 1.0 ||off.m_y < 1.0 )
 					{
-						m_object.at(i)->NotifyParent(m_object.at(z)->m_xobject);
+						if(m_object.at(i)->m_xobject->GetType() == WATER || m_object.at(i)->m_xobject->GetType() == CAR)
+						{
+						m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
+						}
+
 						m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
+
 						printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
 					}
 				}

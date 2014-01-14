@@ -16,6 +16,7 @@ class InputManager;
 class Water;
 class PlayerObject;
 class Sprite;
+class Car;
 
 class Level
 {
@@ -46,10 +47,10 @@ protected:
 	GameObjectManager *gom;
 	Vector2 m_player_start_position;
 	Vector2 m_water_start_position;
+	Vector2 m_car_start_position;
 
 
-
-
+	Car *m_car;
 	PlayerObject* m_player;
 	Water *m_water;
 	Sprite *m_sprite;
