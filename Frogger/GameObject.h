@@ -18,6 +18,8 @@ public:
 	bool HasSprite() const;
 	Sprite* GetSprite();
 
+	void SetStartPosition(const Vector2 &m_position);
+	Vector2 GetStartPosition();
 	bool HasCollider() const;
 	Collider* GetCollider();
 
@@ -26,6 +28,7 @@ public:
 	~GameObject();
 
 protected:
+	Vector2 m_position_start;
 	Vector2 m_position;
 	Sprite *m_sprite;
 	Collider *m_collider;

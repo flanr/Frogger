@@ -27,7 +27,6 @@ public:
 	Level();
 	~Level();
 
-	Vector2 GetStartPosition();
 	bool Load(const std::string &p_filename, SpriteManager *p_sprite_manager
 		, GameObjectManager *m_manager
 		, CollisionManager *collmgr,
@@ -35,7 +34,7 @@ public:
 
 	void Draw(DrawManager *p_draw_manager);
 
-private:
+protected:
 
 	std::string m_spritemap_filename;
 	unsigned int m_width;
@@ -45,7 +44,11 @@ private:
 
 	CollisionManager *m_collmgr;
 	GameObjectManager *gom;
-	Vector2 m_start_position;
+	Vector2 m_player_start_position;
+	Vector2 m_water_start_position;
+
+
+
 
 	PlayerObject* m_player;
 	Water *m_water;

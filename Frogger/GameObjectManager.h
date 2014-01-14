@@ -19,6 +19,7 @@ class GameState;
 class GameObject;
 class DrawManager;
 class Engine;
+class Vector2;
 
 class GameObjectManager
 {
@@ -34,6 +35,8 @@ public:
 	//detach
 	void DetachObject(GameObject *object);
 	void DetachObject();
+	//Get_Start_Position
+	Vector2 GetStartPosition(GameObject *GO);
 	//draw
 	void DrawObject(DrawManager *draw);
 private:

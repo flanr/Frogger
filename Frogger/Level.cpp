@@ -23,8 +23,8 @@ Level::Level()
 	m_player = nullptr;
 	m_sprite = nullptr;
 	m_water = nullptr;
-	m_start_position = Vector2(0.0f, 0.0f);
-
+	m_player_start_position = Vector2(0.0f, 0.0f);
+	m_water_start_position = Vector2(0.0f, 0.0f);
 }
 
 bool Level::Load(const std::string &p_filename
@@ -85,35 +85,39 @@ bool Level::Load(const std::string &p_filename
 			}else if(row[i] == 'S')
 			{
 
-				m_start_position.m_x = x;
-				m_start_position.m_y = y;
+				m_player_start_position.m_x = x;
+				m_player_start_position.m_y = y;
 				x += m_width;
 
 
 				if (m_player == nullptr)
 				{
 					m_player = new PlayerObject(m_input,m_sprite = p_sprite_manager->Load("hero.png", 0, 0, 70, 70)
-						, m_collmgr->CreateCollider(m_start_position, Vector2(70.0, 70.0)));
+						, m_collmgr->CreateCollider(m_player_start_position, Vector2(70.0, 70.0)));
 
-					m_player->SetPosition(m_start_position);
+					m_player->SetPosition(m_player_start_position);
+					m_player->SetStartPosition(m_player_start_position); 
 					m_manager->AttachObject(m_player);
 
-					std::cout << "M_player Object: " << m_start_position.m_x << " / " << m_start_position.m_y << "\n";
+					std::cout << "M_player Object: " << m_player_start_position.m_x << " / " << m_player_start_position.m_y << "\n";
 
 					continue;	
 
 				}
 			}else if(row[i] == '2')
 			{
-				m_start_position.m_x = x;
-				m_start_position.m_y = y;
+				
+				m_water_start_position.m_x = x+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
+				m_water_start_position.m_y = y+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
 
-				
-					m_water = new Water(nullptr, m_collmgr->CreateCollider(m_start_position, Vector2(70.0f, 70.0f)));
-					m_water->SetPosition(m_start_position);
-									
-					m_manager->AttachObject(m_water);
-				
+				// HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
+				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(68.0f, 68.0f)));
+				m_water->SetPosition(m_water_start_position);
+				m_water->SetStartPosition(m_water_start_position); 
+
+				m_manager->AttachObject(m_water);
+				x+= m_width;
+				continue;
 			}
 
 			std::map<char,Coords>::iterator it = m_tile_coords.find(row[i]);
@@ -152,10 +156,4 @@ void Level::Draw(DrawManager *p_draw_manager)
 	m_player->GetPosition().m_y);
 	p_draw_manager->Present();
 	*/
-}
-
-Vector2 Level::GetStartPosition()
-{
-
-	return m_start_position;
 }

@@ -26,13 +26,13 @@ void CollisionManager::CheckCollision()
 	// SÅ MINA COLLIDERS SKA JÄMFÖRAS MED VARANDRA OCH SE OM DE COLLIDERAR, OM DET SKAPAS ETT OFFSET VÄRDE MÅSTE DE SKICKAS TILL DIN PARENT(GAMEOBJECT)///
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Vector2 offset;
+	Vector2 offset(0.0, 0.0);
 	int count = 0;
 	for(auto i = 0UL; i < m_object.size()-1; i++) {
 		for(int z = i+1; z < m_object.size(); z++)
 		{
 
-			Vector2 off;
+			Vector2 off(0.0, 0.0);
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//               object[0] hämtar collider objektet från gameobjectet(collider)                                   //////
 			//och kollar om den överlappar med ett annat gameobject i samma lista(som den hämtar collider från dess parameter)//////
@@ -47,15 +47,22 @@ void CollisionManager::CheckCollision()
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				//std::cout << "CheckCollision(): " <<  m_object.at(i) << " och andra objektet: " << m_object.at(z) << "\n";
 				//std::cout << "  " <<  m_object.at(i)->m_xobject << " || " << m_object.at(z)->m_xobject << "\n";
-				m_object.at(i)->NotifyParent(m_object.at(z)->m_xobject);
-				m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
 
+				if(m_object.at(z)->m_xobject->GetType() == PLAYER)
+				{
+					int sven = 0;
+					if(off.m_x < 1.0 || off.m_x > 1.0 || off.m_y > 1.0 ||off.m_y < 1.0 )
+					{
+						m_object.at(i)->NotifyParent(m_object.at(z)->m_xobject);
+						m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
+						printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
+					}
+				}
 			};
 		};
 	};
 	if(count > 0) {
 		offset /= (float)count;
-		//printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
 		offset.m_x=floorf(offset.m_x);
 		offset.m_y=floorf(offset.m_y);
 

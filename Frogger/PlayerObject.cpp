@@ -46,6 +46,10 @@ void PlayerObject::Update(float deltatime)
 	{	
 		m_velocity.m_y += movespeed;
 	}
+	if(m_input->IsDown(SDLK_5))
+	{
+		m_velocity.m_y -= deltatime+1;
+	}
 
 	m_position += m_velocity;
 

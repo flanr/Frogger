@@ -24,6 +24,11 @@ void GameObjectManager::Update(float deltatime)
 		
 	}
 }
+//GetStartPosition
+Vector2 GameObjectManager::GetStartPosition(GameObject *GO)
+{
+	return GO->GetStartPosition();
+}
 //attach 
 void GameObjectManager::AttachObject(GameObject *object)
 {

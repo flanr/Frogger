@@ -13,12 +13,21 @@ GameObject::GameObject(Sprite *p_sprite, Collider *p_collider)
 {
 	m_collider->m_xobject = this;
 	std::cout << "GameObject_KONSTRUKT: " << m_collider << "  OCH HANS PARENT: " << this << "\n";
-	
+
 }
 GameObject::~GameObject()
 {
-	
+
 }
+void GameObject::SetStartPosition(const Vector2 &p_position)
+{
+	m_position_start = p_position;
+}
+Vector2 GameObject::GetStartPosition()
+{
+	return m_position_start;
+}
+
 void GameObject::Update(float deltatime)
 {
 
@@ -55,7 +64,7 @@ Collider* GameObject::GetCollider()
 
 GameObject_Type GameObject::GetType()
 {
-		return GAMEOBJ;
+	return GAMEOBJ;
 }
 
 

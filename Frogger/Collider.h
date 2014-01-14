@@ -6,7 +6,7 @@
 
 class GameObject;
 
-class Collider
+class Collider 
 {
 public:
 	Collider();

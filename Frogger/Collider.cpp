@@ -5,6 +5,8 @@
 #include "Collider.h"
 #include "GameObject.h"
 #include "GameObjectManager.h"
+#include "Level.h"
+#include <iostream>
 
 Collider::Collider()
 	: m_position(0.0f, 0.0f)
@@ -18,7 +20,7 @@ Collider::~Collider()
 }
 void Collider::NotifyParent(GameObject* go1)
 {
-
+	go1->SetPosition(go1->GetStartPosition());
 }
 Collider::Collider(const Vector2 &p_position, const Vector2 &p_extension)
 	: m_position(p_position)
@@ -50,6 +52,7 @@ bool Collider::Overlap(const Collider &p_other, Vector2 &p_offset)
 					dx = -dx;
 				}
 				p_offset.m_x = dx;
+				//p_other.m_position.m_x += dx;
 				//jag ser här att det står p_other.m_position.m_x += dx; 
 				//också vettefan varför dock
 
@@ -61,6 +64,7 @@ bool Collider::Overlap(const Collider &p_other, Vector2 &p_offset)
 
 				}
 				p_offset.m_y = dy;
+				//p_other.m_position.m_y += dy;
 				//samma här, undrar varför - han += på dx och dy på p_other.m_position.m_y
 				// till något men jag vet inte vad han kan ha för användning av detr senare.
 				//måste vara att han fixar collision senare med det.
