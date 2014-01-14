@@ -31,7 +31,7 @@ void CollisionManager::CheckCollision()
 	for(auto i = 0UL; i < m_object.size()-1; i++) {
 		for(int z = i+1; z < m_object.size(); z++)
 		{
-			
+
 			Vector2 off;
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//               object[0] hämtar collider objektet från gameobjectet(collider)                                   //////
@@ -40,12 +40,15 @@ void CollisionManager::CheckCollision()
 			if(m_object.at(i)->Overlap(*m_object.at(z), off)) { 
 				offset += off;
 				count++;
-				
-				
+
+
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				//JAG VILL SKICKA COLLIDERNA SOM KOLLIDERADE MED VARANDRA TILL SIN RESPEKTIVE GAMEOBJECT SOM HAR COLLIDERNA SOM PARAMETER///
 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				std::cout << "CheckCollision(): " <<  m_object.at(i) << " och andra objektet: " << m_object.at(z) << "\n";
+				//std::cout << "CheckCollision(): " <<  m_object.at(i) << " och andra objektet: " << m_object.at(z) << "\n";
+				//std::cout << "  " <<  m_object.at(i)->m_xobject << " || " << m_object.at(z)->m_xobject << "\n";
+				m_object.at(i)->NotifyParent(m_object.at(z)->m_xobject);
+				m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
 
 			};
 		};
@@ -53,6 +56,8 @@ void CollisionManager::CheckCollision()
 	if(count > 0) {
 		offset /= (float)count;
 		//printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
+		offset.m_x=floorf(offset.m_x);
+		offset.m_y=floorf(offset.m_y);
 
 	};
 }
@@ -60,9 +65,9 @@ Collider *CollisionManager::CreateCollider(Vector2 &position, Vector2 &extension
 {
 
 	Collider *collider = new Collider(position, extension);
-//	m_object.at(amount_of_objects).push_back(collider);
+	//	m_object.at(amount_of_objects).push_back(collider);
 	m_object.push_back(collider);
-//	std::cout << "Collider: " << collider << "\n";
+	//	std::cout << "Collider: " << collider << "\n";
 	//amount_of_objects++;
 	return collider;
 

@@ -36,7 +36,6 @@ public:
 	void DetachObject();
 	//draw
 	void DrawObject(DrawManager *draw);
-
 private:
 	std::vector<GameObject*> m_gameobject;
 

@@ -98,10 +98,12 @@ bool Level::Load(const std::string &p_filename
 					m_player->SetPosition(m_start_position);
 					m_manager->AttachObject(m_player);
 
+					std::cout << "M_player Object: " << m_start_position.m_x << " / " << m_start_position.m_y << "\n";
+
 					continue;	
+
 				}
-			}
-			else if(row[i] == '2')
+			}else if(row[i] == '2')
 			{
 				m_start_position.m_x = x;
 				m_start_position.m_y = y;
@@ -109,7 +111,8 @@ bool Level::Load(const std::string &p_filename
 				
 					m_water = new Water(nullptr, m_collmgr->CreateCollider(m_start_position, Vector2(70.0f, 70.0f)));
 					m_water->SetPosition(m_start_position);
-					
+									
+					m_manager->AttachObject(m_water);
 				
 			}
 

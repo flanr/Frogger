@@ -14,6 +14,7 @@ public:
 	~Collider();
 
 	bool Overlap(const Collider &p_other, Vector2 &p_offset);
+	void NotifyParent(GameObject* go1);
 
 	GameObject *m_xobject; //min collider en pekare till ett gameobject
 	Vector2 m_position;

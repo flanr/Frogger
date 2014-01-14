@@ -3,6 +3,8 @@
 
 #include <cmath>
 #include "Collider.h"
+#include "GameObject.h"
+#include "GameObjectManager.h"
 
 Collider::Collider()
 	: m_position(0.0f, 0.0f)
@@ -14,8 +16,10 @@ Collider::~Collider()
 {
 
 }
+void Collider::NotifyParent(GameObject* go1)
+{
 
-
+}
 Collider::Collider(const Vector2 &p_position, const Vector2 &p_extension)
 	: m_position(p_position)
 	, m_extension(p_extension)

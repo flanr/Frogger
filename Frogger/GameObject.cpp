@@ -13,7 +13,7 @@ GameObject::GameObject(Sprite *p_sprite, Collider *p_collider)
 {
 	m_collider->m_xobject = this;
 	std::cout << "GameObject_KONSTRUKT: " << m_collider << "  OCH HANS PARENT: " << this << "\n";
-
+	
 }
 GameObject::~GameObject()
 {
