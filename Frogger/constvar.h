@@ -54,10 +54,10 @@ class cvarList{
 		void unlock();
 		
 		
-		cvarElement* get(char* navn);											//Search for a variable, if not found returns NULL
+		cvarElement* get(char* name);											//Search for a variable, if not found returns NULL
 																				//+Locks
-		cvarElement* set(char* navn, char* content, esize contentSize);			//This will add a variable unless it allready exists
-		cvarElement* append(char* navn, char* content, esize contentSize);		//This will also add a variable unless exists; but will not empty content if it does exist.
+		cvarElement* set(char* name, char* content, esize contentSize);			//This will add a variable unless it allready exists
+		cvarElement* append(char* name, char* content, esize contentSize);		//This will also add a variable unless exists; but will not empty content if it does exist.
 		bool save();															//Save variables to file
 		bool load();															//Re-load file (Note this will delete all variables and reload the ones in the file)
 		
