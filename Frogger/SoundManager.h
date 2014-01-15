@@ -20,6 +20,7 @@ public:
 	MusicClip* CreateMusic(std::string p_Path);
 	SoundClip* CreateSound(std::string p_Path);
 	void PlayNext();
+	void PlayPrev();
 	MusicClip* GetMusicClip();
 private:
 	int m_current;

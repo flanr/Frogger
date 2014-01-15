@@ -45,11 +45,11 @@ Engine::~Engine()
 
 bool Engine::Initialize()
 {
-	
+
 	char buffer[1024];
 	sprintf(buffer, "%04d", 720);
 	//Config->get("VariableName")->getData() returns data in that variable
-	
+
 	if(!Config->get("ResX"))
 	{
 		Config->set((char*)"ResX",buffer, strlen(buffer));
@@ -64,7 +64,7 @@ bool Engine::Initialize()
 		Config->set("Music Vol", "50", strlen("50"));
 	}
 	setMusicVolume(atoi(Config->get("Music Vol")->getData()));
-	
+
 	// Start SDL
 
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -94,6 +94,8 @@ bool Engine::Initialize()
 
 		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\03.Everyday(Netsky remix).flac");
 		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\01StereoLove(Original Mix).flac");
+		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\groovin.mp3");
+		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\Starchild.mp3");
 		m_MusicClip->Play();
 
 	}
@@ -136,13 +138,17 @@ void Engine::Run()
 		{
 			m_SoundMgr->PlayNext();
 		}
+		if (m_input.IsDownOnce(SDLK_b))
+		{
+			m_SoundMgr->PlayPrev();
+		}
 		m_draw_manager->Clear();
 		m_state_manager.Update(m_deltatime);
 		m_state_manager.Draw();
 		m_draw_manager->Present();
 		m_input.PostKeyboardUpdate();
 		m_input.PostMouseUpdate();
-		
+
 		m_MusicClip->Volume();
 		UpdateDeltatime();
 		m_input.HandleInput(&m_running, &m_input, &m_state_manager);

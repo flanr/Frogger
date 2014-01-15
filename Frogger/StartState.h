@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include <SDL.h>
 #include "Menu.h"
+#include "Button.h"
 
 class InputManager;
 class Engine;
@@ -32,6 +33,8 @@ private:
 	bool selected;
 	bool hovered;
 	bool m_done;
+	Button Start;
+	Button Options;
 	Engine* m_engine;
 	InputManager* m_input;
 	std::string m_state_next;

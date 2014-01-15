@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "Engine.h"
 #include <stdio.h>
+#include "Button.h"
 
 StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
@@ -19,7 +20,7 @@ StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectMa
 	m_manager = manager;
 	selected = false;
 	selected = false;
-
+	Start.SetButton(500, 290, 100,100);
 	// bool MenuStateRunning = false;
 }
 
@@ -107,6 +108,7 @@ void StartState::Draw()
 {
 	SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
 	SDL_RenderFillRect(renderer, &startbutton);
+	SDL_RenderFillRect(renderer, &Start.GetButton());
 
 	//SDL_RenderClear(renderer);
 }
