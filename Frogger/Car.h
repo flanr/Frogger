@@ -24,7 +24,8 @@ public:
 
 private:
 	Vector2 m_velocity;
-	float movespeed;
+	float m_movespeed;
+	float m_direction;
 		//	AnimatedSprite *m_current_animation;
 	//std::map<std::string, AnimatedSprite*> m_animation;
 };

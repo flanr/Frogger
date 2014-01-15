@@ -120,7 +120,7 @@ void Engine::UpdateDeltatime()
 	unsigned int ticks = SDL_GetTicks();
 	unsigned int delta = ticks - m_ticks;
 	m_ticks = ticks;
-	m_deltatime = (float)delta * 0.0001f;
+	m_deltatime = (float)delta * 0.001f;
 	if(m_deltatime > 0.1f) {
 		m_deltatime = 0.1f;
 	};
