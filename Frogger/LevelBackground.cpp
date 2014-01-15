@@ -89,7 +89,7 @@ bool LevelBackground::Load(const std::string &p_filename, SpriteManager *p_sprit
 
 		}
 		y += m_height;
-		x=0;
+		x= 0;
 	}
 	stream.close();
 	return true;

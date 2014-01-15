@@ -145,16 +145,27 @@ bool Level::Load(const std::string &p_filename
 			}else if(row[i] == '4')//LOG
 			{
 
-				m_car_start_position.m_x = x+1;
-				m_car_start_position.m_y = y+1;
+				m_tree_start_position.m_x = x+1;
+				m_tree_start_position.m_y = y+1;
+
+				m_water_start_position.m_x = x+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
+				m_water_start_position.m_y = y+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
+
+				// HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
+				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(68.0f, 60.0f)));
+				m_water->SetPosition(m_water_start_position);
+				m_water->SetStartPosition(m_water_start_position); 
+
+				m_manager->AttachObject(m_water);
 
 				m_tree = new Tree(m_sprite = p_sprite_manager->Load("map.png", 288, 720, 70, 70)
-					, m_collmgr->CreateCollider(m_car_start_position, Vector2(68, 60.0f)));
+					, m_collmgr->CreateCollider(m_tree_start_position, Vector2(68, 60.0f)));
 
-				m_tree->SetPosition(m_car_start_position);
-				m_tree->SetStartPosition(m_car_start_position); 
 
-				m_manager->AttachObject(m_tree);
+				m_tree->SetPosition(m_tree_start_position);
+				m_tree->SetStartPosition(m_tree_start_position); 
+
+				m_manager->AttachObject(m_tree);	
 				x+= m_width;
 				continue;
 

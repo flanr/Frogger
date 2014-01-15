@@ -58,19 +58,18 @@ void CollisionManager::CheckCollision()
 							
 							m_object.at(z)->m_xobject->m_is_on_log = true;
 							m_object.at(z)->m_xobject->SetPosition(m_object.at(i)->m_xobject->GetPosition());
+							return;
 
-						}else if(m_object.at(i)->m_xobject->GetType() == WATER && !m_object.at(i)->m_xobject->GetType() == WATER)
+						}else// if(m_object.at(i)->m_xobject->GetType() == WATER && !m_object.at(z)->m_xobject->m_is_on_log)
 						{
 							m_object.at(z)->m_xobject->m_is_on_log = false;
 						}
 						//WATER AND CAR COLLISION
-						if(m_object.at(i)->m_xobject->GetType() == WATER && m_object.at(z)->m_xobject->m_is_on_log == false
+						if((m_object.at(i)->m_xobject->GetType() == WATER && m_object.at(z)->m_xobject->m_is_on_log == false)
 							|| m_object.at(i)->m_xobject->GetType() == CAR)
 						{
 							m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
 						}
-
-
 								//				m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
 
 						printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
