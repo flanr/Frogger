@@ -119,7 +119,7 @@ bool Level::Load(const std::string &p_filename
 				m_water_start_position.m_y = y+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
 
 				// HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
-				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(68.0f, 60.0f)));
+				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(60.0f, 60.0f)));
 				m_water->SetPosition(m_water_start_position);
 				m_water->SetStartPosition(m_water_start_position); 
 
@@ -133,7 +133,7 @@ bool Level::Load(const std::string &p_filename
 				m_car_start_position.m_y = y+1;
 
 				m_car = new Car(m_sprite = p_sprite_manager->Load("hero.png", 0, 0, 70, 70)
-					, m_collmgr->CreateCollider(m_car_start_position, Vector2(68.0f, 60.0f)));
+					, m_collmgr->CreateCollider(m_car_start_position, Vector2(60.0f, 60.0f)));
 
 				m_car->SetPosition(m_car_start_position);
 				m_car->SetStartPosition(m_car_start_position); 
@@ -152,15 +152,15 @@ bool Level::Load(const std::string &p_filename
 				m_water_start_position.m_y = y+1;   // HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
 
 				// HÄR KRINGGÅR VI SKIT FÖR JAG PALLAR EJ
-				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(68.0f, 60.0f)));
+				m_water = new Water(nullptr, m_collmgr->CreateCollider(m_water_start_position, Vector2(60.0f, 60.0f)));
 				m_water->SetPosition(m_water_start_position);
 				m_water->SetStartPosition(m_water_start_position); 
 
 				m_manager->AttachObject(m_water);
 
 				m_tree = new Tree(m_sprite = p_sprite_manager->Load("map.png", 288, 720, 70, 70)
-					, m_collmgr->CreateCollider(m_tree_start_position, Vector2(68, 60.0f)));
-
+					, m_collmgr->CreateCollider(m_tree_start_position, Vector2(60, 60.0f)));
+				4
 
 				m_tree->SetPosition(m_tree_start_position);
 				m_tree->SetStartPosition(m_tree_start_position); 
