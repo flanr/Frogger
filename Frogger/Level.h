@@ -17,6 +17,7 @@ class Water;
 class PlayerObject;
 class Sprite;
 class Car;
+class Tree;
 
 class Level
 {
@@ -48,8 +49,9 @@ protected:
 	Vector2 m_player_start_position;
 	Vector2 m_water_start_position;
 	Vector2 m_car_start_position;
+	Vector2 m_tree_start_position;
 
-
+	Tree *m_tree;
 	Car *m_car;
 	PlayerObject* m_player;
 	Water *m_water;

@@ -27,6 +27,8 @@ public:
 
 	~GameObject();
 
+	bool m_is_on_log;
+
 protected:
 	Vector2 m_position_start;
 	Vector2 m_position;

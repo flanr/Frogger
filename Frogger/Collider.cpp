@@ -22,6 +22,7 @@ void Collider::NotifyParent(GameObject* go1)
 {
 	go1->SetPosition(go1->GetStartPosition());
 }
+
 Collider::Collider(const Vector2 &p_position, const Vector2 &p_extension)
 	: m_position(p_position)
 	, m_extension(p_extension)
