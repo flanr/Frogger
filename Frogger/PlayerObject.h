@@ -8,6 +8,7 @@
 class InputManager;
 class Sprite;
 class Collider;
+class Tree;
 
 //class AnimatedSprite;
 
@@ -21,7 +22,8 @@ public:
 //	void AddAnimation(const std::string &name, AnimatedSprite *sprite);
 
 protected:
-
+	
+	
 	InputManager* m_input;
 	Vector2 m_velocity;
 //	AnimatedSprite *m_current_animation;

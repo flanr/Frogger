@@ -113,6 +113,7 @@
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="StartState.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Water.cpp" />
   </ItemGroup>
@@ -130,6 +131,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlobalGameConfig.h" />
     <ClInclude Include="StartState.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="Water.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />

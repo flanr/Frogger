@@ -8,13 +8,13 @@
 #include "Sprite.h"
 #include "Collider.h"
 #include <iostream>
+#include "Tree.h"
 
 PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* collider)
 	: GameObject(sprite, collider)
 	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
-
 	//	m_current_animation = nullptr;
 }
 
@@ -48,7 +48,7 @@ void PlayerObject::Update(float deltatime)
 	}
 	if(m_input->IsDown(SDLK_5))
 	{
-		m_velocity.m_y -= deltatime+1;
+		m_velocity.m_y -= deltatime+ 10;
 	}
 
 	m_position += m_velocity;
