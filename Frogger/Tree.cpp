@@ -18,7 +18,7 @@ Tree::Tree(Sprite* sprite, Collider* collider)
 
 
 	m_direction = 0.0f;
-	m_movespeed = 200.0f;
+	m_movespeed = rand() %100+500.0f;
 
 	if(m_collider->m_position.m_x < 360)
 	{
