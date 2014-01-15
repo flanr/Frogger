@@ -1,6 +1,8 @@
+//bufferex.h
+
 #include <stdint.h>
 #pragma once
-//bufferex.h
+
 
 /*
 	Header of the bufferex class by Hellbinder aka Trippler

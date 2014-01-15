@@ -12,7 +12,7 @@ SoundManager::SoundManager()
 	{
 		printf("SDL_Mixer :: Mix_OpenAudio %s\n", Mix_GetError());
 	}
-	m_current = 1;
+	m_current = 3;
 }
 
 SoundManager::~SoundManager()
@@ -105,9 +105,18 @@ void SoundManager::PlayNext()
 	m_MusicClips[m_current]->Stop();
 	m_current = (m_current + 1) % m_MusicClips.size();
 	m_MusicClips[m_current]->Play();
-
+	
 
 }
+void SoundManager::PlayPrev()
+{
+	m_MusicClips[m_current]->Stop();
+	m_current = (m_current - 1) % m_MusicClips.size();
+	m_MusicClips[m_current]->Play();
+	
+
+}
+
 MusicClip* SoundManager::GetMusicClip()
 {
 	return m_MusicClips[m_current];    

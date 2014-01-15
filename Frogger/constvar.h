@@ -1,5 +1,5 @@
-//#ifndef sl_constvar_h
-//#define sl_constvar_h
+//constvar.h
+
 #include "bufferex.h"
 #include <list>
 #pragma once
@@ -65,5 +65,3 @@ class cvarList{
 };
 
 
-
-//#endif

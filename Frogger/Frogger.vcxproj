@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="BackgroundObject.cpp" />
     <ClCompile Include="bufferex.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -119,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="BackgroundObject.h" />
     <ClInclude Include="bufferex.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="constvar.h" />
