@@ -6,6 +6,7 @@
 #include "GameObjectManager.h"
 #include "InputManager.h"
 #include "Engine.h"
+#include <stdio.h>
 
 StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
@@ -16,6 +17,9 @@ StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectMa
 	startbutton.h = 100;
 	m_input = input;
 	m_manager = manager;
+	selected = false;
+	selected = false;
+
 	// bool MenuStateRunning = false;
 }
 
@@ -25,6 +29,7 @@ bool StartState::Enter(Engine* engine)
 	m_Current_State = "StartState";
 	std::cout << "StartState now running" << std::endl;
 	return false;
+	
 }
 std::string StartState::GetCurrentState()
 {
@@ -41,6 +46,46 @@ void StartState::HandleInput()
 	{
 		m_engine->m_state_manager.SetState("GameState");
 	}
+	moveMouse(m_input->GetX(),m_input->GetY());
+	if (m_input->IsDown(MB_LEFT))
+	{
+		mouseDown(m_input->GetX(),m_input->GetY());
+	}
+
+}
+bool StartState::mouseOver(int x, int y)
+{
+	return (x > startbutton.x && x <startbutton.x+ startbutton.w) && (y > startbutton.y && y < startbutton.y+ startbutton.h);
+}
+void StartState::mouseDown(int x, int y)
+{
+	if(mouseOver(x,y))
+	{
+		selected = true;
+		
+		m_engine->m_state_manager.SetState("GameState");
+		moveMouse(x, y);
+	}
+
+}
+void StartState::moveMouse(int x, int y)
+{
+	if(mouseOver(x,y))
+	{
+		hovered = true;
+	}
+	else
+	{
+		selected = false;
+		hovered = false;
+	}
+
+	if (selected)
+	{
+		printf("X:[%d]Y: [%d]\r\n", x, y);
+	}
+
+
 }
 
 
