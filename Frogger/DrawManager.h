@@ -29,7 +29,7 @@ public:
 	/**
 	Prints Updated screen?
 	**/
-	void Draw(Sprite *p_sprite, int p_x, int p_y);
+	void Draw(Sprite *p_sprite, int p_x, int p_y, int p_width = 0, int p_height = 0);
 
 	SDL_Renderer* GetRenderer();
 private:

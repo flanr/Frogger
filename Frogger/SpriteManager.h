@@ -28,7 +28,7 @@ public:
 	Sprite* Load(const string &filename, int x, int y, int width, int height);
 	Animation *Load(const std::string &p_filename);
 
-	bool LoadImage(const std::string &filename);
+	bool SpriteManager::LoadImage(const std::string &p_filename);
 
 
 private:

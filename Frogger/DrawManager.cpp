@@ -44,10 +44,17 @@ void DrawManager::Present()
 {
 	SDL_RenderPresent(m_renderer);
 }
-void DrawManager::Draw(Sprite *p_sprite, int p_x, int p_y)
+void DrawManager::Draw(Sprite *p_sprite, int p_x, int p_y, int p_width, int p_height)
 {
+	int iWidth = p_sprite->m_width;
+	int iHeight = p_sprite->m_height;
+	if(p_width != 0 && p_height != 0)
+	{
+		iWidth = p_width;
+		iHeight = p_height;
+	}
 	SDL_Rect src = {p_sprite->m_x,p_sprite->m_y,p_sprite->m_width,p_sprite->m_height};
-	SDL_Rect dst = {p_x,p_y,p_sprite->m_width,p_sprite->m_height};
+	SDL_Rect dst = {p_x,p_y,iWidth,iHeight};
 	SDL_RenderCopy(m_renderer, p_sprite->m_texture, &src, &dst);
 }
 

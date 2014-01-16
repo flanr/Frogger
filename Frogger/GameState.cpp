@@ -23,8 +23,6 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	this->renderer = renderer;
 	m_draw_manager = nullptr;
 	m_level = nullptr;
-	m_player = nullptr;
-	m_water = nullptr;
 	m_input = input;
 	m_collmgr = nullptr;
 	m_collider = nullptr;

@@ -53,8 +53,6 @@ private:
 	Sprite* m_sprite;
 	Collider* m_collider;
 	//Ladbon
-	PlayerObject* m_player;
-	Water *m_water;
 	InputManager *m_input;
 	CollisionManager *m_collmgr;
 	GameObjectManager *m_manager;

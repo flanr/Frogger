@@ -31,19 +31,22 @@ void PlayerObject::Update(float deltatime)
 
 	if(m_input->IsDownOnce(SDLK_a))
 	{
-		std::cout << "a\n";
+		SetAnimation("Player_Move_Left");
 		m_velocity.m_x -= movespeed;
 	}
 	if(m_input->IsDownOnce(SDLK_d))
 	{
+		SetAnimation("Player_Move_Right");
 		m_velocity.m_x += movespeed;
 	}
 	if(m_input->IsDownOnce(SDLK_w))
 	{
+		SetAnimation("Player_Move");
 		m_velocity.m_y -= movespeed;
 	}
 	if(m_input->IsDownOnce(SDLK_s))
 	{	
+		SetAnimation("Player_Move_Down");
 		m_velocity.m_y += movespeed;
 	}
 	if(m_input->IsDown(SDLK_5))
@@ -59,7 +62,6 @@ void PlayerObject::Update(float deltatime)
 
 }
 
-
 void PlayerObject::AddAnimation(const std::string &name, Animation *sprite)
 {
 	m_animation.insert(std::pair<std::string, Animation*>(name, sprite));
@@ -69,6 +71,18 @@ void PlayerObject::AddAnimation(const std::string &name, Animation *sprite)
 		m_sprite = sprite;
 		m_current_animation = sprite;
 	}
+}
 
-
+void PlayerObject::SetAnimation(std::string name)
+{
+	auto xIt = m_animation.begin();
+	while(xIt != m_animation.end())
+	{
+		if(xIt->first == name)
+		{
+			m_sprite = xIt->second;
+			m_current_animation = xIt->second;
+		}
+		xIt++;
+	}
 }

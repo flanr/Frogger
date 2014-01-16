@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "DrawManager.h"
 #include "Collider.h"
+#include "Sprite.h"
 #include <iostream>
 
 GameObjectManager::GameObjectManager()
@@ -21,7 +22,10 @@ void GameObjectManager::Update(float deltatime)
 	{
 		GameObject *obj = *it;
 		obj->Update(deltatime);
-		
+		if(obj->GetType() == PLAYER)
+		{
+			obj->GetSprite()->Update(deltatime);
+		}
 	}
 }
 //GetStartPosition
@@ -70,7 +74,14 @@ void GameObjectManager::DrawObject(DrawManager *draw)
 		GameObject *obj = *it;
 		if (obj->HasSprite())
 		{
-			draw->Draw(obj->GetSprite(), obj->GetPosition().m_x, obj->GetPosition().m_y);
+			if(obj->GetType() == PLAYER)
+			{
+				draw->Draw(obj->GetSprite(), obj->GetPosition().m_x, obj->GetPosition().m_y, 70, 70);
+			}
+			else
+			{
+				draw->Draw(obj->GetSprite(), obj->GetPosition().m_x, obj->GetPosition().m_y);
+			}
 		}
 	}
 }

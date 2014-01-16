@@ -104,16 +104,22 @@ bool Level::Load(const std::string &p_filename
 
 				if (m_player == nullptr)
 				{
-					Animation *sprite = p_sprite_manager->Load("../data/animations/Player_Move.txt");
-					m_player = new PlayerObject( m_input, sprite, m_collmgr->CreateCollider(m_player_start_position, Vector2(68.0, 68.0)));
+
+					m_player = new PlayerObject( m_input, nullptr, m_collmgr->CreateCollider(m_player_start_position, Vector2(60.0, 60.0)));
 
 					m_player->SetPosition(m_player_start_position);
 					m_player->SetStartPosition(m_player_start_position); 
 
 
-					
+					Animation *sprite = p_sprite_manager->Load("../data/animations/Player_Move.txt");
 					m_player->AddAnimation("Player_Move", sprite);
-					
+					sprite = p_sprite_manager->Load("../data/animations/Player_Move_Left.txt");
+					m_player->AddAnimation("Player_Move_Left", sprite);
+					sprite = p_sprite_manager->Load("../data/animations/Player_Move_Down.txt");
+					m_player->AddAnimation("Player_Move_Down", sprite);
+					sprite = p_sprite_manager->Load("../data/animations/Player_Move_Right.txt");
+					m_player->AddAnimation("Player_Move_Right", sprite);
+					m_player->SetAnimation("Player_Move");
 
 					m_manager->AttachObject(m_player);
 

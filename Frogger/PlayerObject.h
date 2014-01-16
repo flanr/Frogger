@@ -2,6 +2,7 @@
 
 #include "map"
 #include "GameObject.h"
+#include <string>
 
 #pragma once
 
@@ -19,9 +20,9 @@ public:
 
 	void Update(float deltatime);
 	void AddAnimation(const std::string &name, Animation *sprite);
+	void SetAnimation(std::string name);
 
 protected:
-	
 	
 	InputManager* m_input;
 	Vector2 m_velocity;
