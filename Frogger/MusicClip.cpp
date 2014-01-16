@@ -24,13 +24,12 @@ MusicClip::MusicClip(Mix_Music* p_Clip)
 void MusicClip::Play()
 {
 	printf("Channel: %d - \"%s\"\r\n", m_Channel, Mix_GetError());
-	m_Channel = Mix_PlayMusic(m_Clip, 0);
+	m_Channel = Mix_PlayMusic(m_Clip,0);
 	
 }
-void MusicClip::musicFinished()
+bool MusicClip::IsPlaying()
 {
-    printf("Music stopped.\n");
-	
+	return Mix_PlayingMusic();	
 }
 
 void MusicClip::Pause()

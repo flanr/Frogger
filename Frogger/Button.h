@@ -16,10 +16,7 @@ public:
 	int GetH();
 	SDL_Rect GetButton();
 private:
-	int x;
-	int y;
-	int w;
-	int h;
+
 	SDL_Rect button;
 };
 

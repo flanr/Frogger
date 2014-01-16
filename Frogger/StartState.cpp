@@ -8,25 +8,26 @@
 #include "Engine.h"
 #include <stdio.h>
 #include "Button.h"
+#include "Sprite.h"
+#include "SpriteManager.h"
+#include "DrawManager.h"
 
 StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;
-	startbutton.x = 290;
-	startbutton.y = 290;
-	startbutton.w = 100;
-	startbutton.h = 100;
 	m_input = input;
 	m_manager = manager;
-	selected = false;
-	selected = false;
 	Start.SetButton(500, 290, 100,100);
+	Options.SetButton(400, 100, 100, 100);
 	// bool MenuStateRunning = false;
 }
 
 bool StartState::Enter(Engine* engine)
 {
 	m_engine =engine;
+	backgroundImg = m_engine->m_sprite_manager->Load("froggerbg.png",0,0,720,720);
+	plaYImg = m_engine->m_sprite_manager->Load("plaY.png",0,0,100,100);
+	optionImg = m_engine->m_sprite_manager->Load("settings.png",0,0,100,100);
 	m_Current_State = "StartState";
 	std::cout << "StartState now running" << std::endl;
 	return false;
@@ -47,47 +48,42 @@ void StartState::HandleInput()
 	{
 		m_engine->m_state_manager.SetState("GameState");
 	}
-	moveMouse(m_input->GetX(),m_input->GetY());
+	
 	if (m_input->IsDown(MB_LEFT))
 	{
 		mouseDown(m_input->GetX(),m_input->GetY());
 	}
 
 }
-bool StartState::mouseOver(int x, int y)
+int StartState::mouseOver(int x, int y)
 {
-	return (x > startbutton.x && x <startbutton.x+ startbutton.w) && (y > startbutton.y && y < startbutton.y+ startbutton.h);
+	if ((x > Start.GetX() && x <Start.GetX()+ Start.GetW()) && (y > Start.GetY() && y < Start.GetY()+ Start.GetH())){
+		return 1;
+	}
+	else if ((x > Options.GetX() && x <Options.GetX()+ Options.GetW()) && (y > Options.GetY() && y < Options.GetY()+ Options.GetH())){
+		return 2;
+	}
+	else{
+		return 0;
+	}
 }
 void StartState::mouseDown(int x, int y)
 {
-	if(mouseOver(x,y))
+	if(mouseOver(x,y) == 1)
 	{
-		selected = true;
 		
 		m_engine->m_state_manager.SetState("GameState");
-		moveMouse(x, y);
+
+	}
+	if(mouseOver(x,y) == 2)
+	{
+		
+		m_engine->m_state_manager.SetState("MenuState");
+
 	}
 
 }
-void StartState::moveMouse(int x, int y)
-{
-	if(mouseOver(x,y))
-	{
-		hovered = true;
-	}
-	else
-	{
-		selected = false;
-		hovered = false;
-	}
 
-	if (selected)
-	{
-		printf("X:[%d]Y: [%d]\r\n", x, y);
-	}
-
-
-}
 
 
 bool StartState::Update(float p_deltatime)
@@ -106,10 +102,9 @@ bool StartState::Update(float p_deltatime)
 
 void StartState::Draw()
 {
-	SDL_SetRenderDrawColor(renderer, 255,0,0,0xff);
-	SDL_RenderFillRect(renderer, &startbutton);
-	SDL_RenderFillRect(renderer, &Start.GetButton());
-
+	m_engine->m_draw_manager->Draw(backgroundImg,0,0);
+	m_engine->m_draw_manager->Draw(plaYImg,Start.GetX(),Start.GetY());
+	m_engine->m_draw_manager->Draw(optionImg,Options.GetX(),Options.GetY());
 	//SDL_RenderClear(renderer);
 }
 
