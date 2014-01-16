@@ -8,14 +8,14 @@
 #include "Sprite.h"
 #include "Collider.h"
 #include <iostream>
-#include "Tree.h"
+#include "Animation.h"
 
 PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* collider)
 	: GameObject(sprite, collider)
 	, m_input(control)
 	, m_velocity(0.0f, 0.0f)
 { 
-	//	m_current_animation = nullptr;
+	m_current_animation = nullptr;
 }
 
 GameObject_Type PlayerObject::GetType()
@@ -58,7 +58,17 @@ void PlayerObject::Update(float deltatime)
 	};
 
 }
-//void PlayerObject::AddAnimation(const std::string &name, AnimatedSprite *sprite)
-//{
-//m_animation.insert(std::pair<std::string, AnimatedSprite*>(name, sprite));	
-//}
+
+
+void PlayerObject::AddAnimation(const std::string &name, Animation *sprite)
+{
+	m_animation.insert(std::pair<std::string, Animation*>(name, sprite));
+
+	if(m_sprite == nullptr)
+	{
+		m_sprite = sprite;
+		m_current_animation = sprite;
+	}
+
+
+}

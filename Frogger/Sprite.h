@@ -7,11 +7,11 @@ struct SDL_Surface;
 class Sprite
 {
 	friend class DrawManager;
-	friend class SpriteManager;
+	friend class SpriteManager;	
 public:
 	Sprite(SDL_Surface *surface, SDL_Texture *texture, int x, int y, int width, int height);
 
-private:
+protected:
 	SDL_Surface *m_surface;
 	SDL_Texture *m_texture;
 	int m_x;

@@ -17,6 +17,7 @@
 #include "Collider.h"
 
 
+
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;

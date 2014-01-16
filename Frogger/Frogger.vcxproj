@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BackgroundObject.cpp" />
     <ClCompile Include="bufferex.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="Water.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="BackgroundObject.h" />
     <ClInclude Include="bufferex.h" />
     <ClInclude Include="Button.h" />

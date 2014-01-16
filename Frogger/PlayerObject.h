@@ -1,6 +1,6 @@
 // PlayerObject.h
 
-//#include "map"
+#include "map"
 #include "GameObject.h"
 
 #pragma once
@@ -9,8 +9,7 @@ class InputManager;
 class Sprite;
 class Collider;
 class Tree;
-
-//class AnimatedSprite;
+class Animation;
 
 class PlayerObject : public GameObject {
 public:
@@ -19,13 +18,13 @@ public:
 	virtual GameObject_Type GetType();
 
 	void Update(float deltatime);
-//	void AddAnimation(const std::string &name, AnimatedSprite *sprite);
+	void AddAnimation(const std::string &name, Animation *sprite);
 
 protected:
 	
 	
 	InputManager* m_input;
 	Vector2 m_velocity;
-//	AnimatedSprite *m_current_animation;
-	//std::map<std::string, AnimatedSprite*> m_animation;
+	Animation *m_current_animation;
+	std::map<std::string, Animation*> m_animation;
 };

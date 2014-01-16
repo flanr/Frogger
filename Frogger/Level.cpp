@@ -16,12 +16,13 @@
 #include "Car.h"
 #include "Tree.h"
 #include "Goal.h"
+#include "Animation.h"
 
 Level::Level()
 {
 	m_height =0;
 	m_width =0;
-	
+
 	m_collmgr = nullptr;
 	gom = nullptr;
 	m_player = nullptr;
@@ -103,12 +104,20 @@ bool Level::Load(const std::string &p_filename
 
 				if (m_player == nullptr)
 				{
-					m_player = new PlayerObject(m_input,m_sprite = p_sprite_manager->Load("hero.png", 0, 0, 70, 70)
-						, m_collmgr->CreateCollider(m_player_start_position, Vector2(68.0, 68.0)));
+					Animation *sprite = p_sprite_manager->Load("../data/animations/Player_Move.txt");
+					m_player = new PlayerObject( m_input, sprite, m_collmgr->CreateCollider(m_player_start_position, Vector2(68.0, 68.0)));
 
 					m_player->SetPosition(m_player_start_position);
 					m_player->SetStartPosition(m_player_start_position); 
+
+
+					
+					m_player->AddAnimation("Player_Move", sprite);
+					
+
 					m_manager->AttachObject(m_player);
+
+
 
 					std::cout << "M_player Object: " << m_player_start_position.m_x << " / " << m_player_start_position.m_y << "\n";
 
@@ -163,7 +172,7 @@ bool Level::Load(const std::string &p_filename
 
 				m_tree = new Tree(m_sprite = p_sprite_manager->Load("map.png", 288, 720, 70, 70)
 					, m_collmgr->CreateCollider(m_tree_start_position, Vector2(68, 60.0f)));
-					
+
 
 				m_tree->SetPosition(m_tree_start_position);
 				m_tree->SetStartPosition(m_tree_start_position); 
