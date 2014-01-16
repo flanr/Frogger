@@ -119,7 +119,17 @@ bool Level::Load(const std::string &p_filename
 					m_player->AddAnimation("Player_Move_Down", sprite);
 					sprite = p_sprite_manager->Load("../data/animations/Player_Move_Right.txt");
 					m_player->AddAnimation("Player_Move_Right", sprite);
-					m_player->SetAnimation("Player_Move");
+					m_player->SetAnimation("Player_Move");					
+
+
+					sprite = p_sprite_manager->Load("../data/animations/Player_Moving_Still_Left.txt");
+					m_player->AddAnimation("Player_Moving_Still_Left", sprite);
+					sprite = p_sprite_manager->Load("../data/animations/Player_Moving_Still.txt");
+					m_player->AddAnimation("Player_Moving_Still", sprite);
+					sprite = p_sprite_manager->Load("../data/animations/Player_Moving_Still_Right.txt");
+					m_player->AddAnimation("Player_Moving_Still_Right", sprite);
+					sprite = p_sprite_manager->Load("../data/animations/Player_Moving_Still_Down.txt");
+					m_player->AddAnimation("Player_Moving_Still_Down", sprite);
 
 					m_manager->AttachObject(m_player);
 

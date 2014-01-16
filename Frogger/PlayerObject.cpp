@@ -16,6 +16,7 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 	, m_velocity(0.0f, 0.0f)
 { 
 	m_current_animation = nullptr;
+	m_direction = "up";
 }
 
 GameObject_Type PlayerObject::GetType()
@@ -31,27 +32,30 @@ void PlayerObject::Update(float deltatime)
 
 	if(m_input->IsDownOnce(SDLK_a))
 	{
+		m_direction = "left";
 		SetAnimation("Player_Move_Left");
 		m_velocity.m_x -= movespeed;
+
 	}
 	if(m_input->IsDownOnce(SDLK_d))
 	{
+		m_direction = "right";
 		SetAnimation("Player_Move_Right");
 		m_velocity.m_x += movespeed;
+
 	}
 	if(m_input->IsDownOnce(SDLK_w))
 	{
+		m_direction = "up";
 		SetAnimation("Player_Move");
 		m_velocity.m_y -= movespeed;
+
 	}
 	if(m_input->IsDownOnce(SDLK_s))
 	{	
+		m_direction = "down";
 		SetAnimation("Player_Move_Down");
 		m_velocity.m_y += movespeed;
-	}
-	if(m_input->IsDown(SDLK_5))
-	{
-		m_velocity.m_y -= deltatime+ 10;
 	}
 
 	m_position += m_velocity;
@@ -60,6 +64,17 @@ void PlayerObject::Update(float deltatime)
 		m_collider->m_position = m_position;
 	};
 
+	if(m_input->IsUp(SDLK_a) && m_input->IsUp(SDLK_d) && m_input->IsUp(SDLK_w) && m_input->IsUp(SDLK_s))
+	{
+		if(m_direction == "up")
+		{ SetAnimation("Player_Moving_Still"); }
+		else if(m_direction == "down")
+		{ SetAnimation("Player_Moving_Still_Down"); }
+		else if(m_direction == "left")
+		{ SetAnimation("Player_Moving_Still_Left"); }
+		else if(m_direction == "right")
+		{ SetAnimation("Player_Moving_Still_Right"); }
+	}
 }
 
 void PlayerObject::AddAnimation(const std::string &name, Animation *sprite)

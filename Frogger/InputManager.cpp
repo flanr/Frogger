@@ -89,6 +89,10 @@ bool InputManager::IsDown(int key) const
 {
 	return m_current[key];
 }
+bool InputManager::IsUp(int key)
+{
+	return !m_current[key];
+}
 void InputManager::PostKeyboardUpdate() {
 	for(int i = 0; i < 256; i++) {
 		m_previous[i] = m_current[i];

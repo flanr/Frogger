@@ -18,6 +18,7 @@ public:
 
 	bool IsDownOnce(int key) const;
 	bool IsDown(int key) const;
+	bool IsUp(int key);
 	
 	void PostKeyboardUpdate();
 	

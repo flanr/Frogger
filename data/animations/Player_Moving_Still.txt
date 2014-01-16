@@ -1,4 +1,2 @@
 Hero_Animation.png
-0.2 21 0 20 20
 0.2 0 0 20 20
-

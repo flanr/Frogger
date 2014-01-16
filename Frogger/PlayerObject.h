@@ -21,9 +21,9 @@ public:
 	void Update(float deltatime);
 	void AddAnimation(const std::string &name, Animation *sprite);
 	void SetAnimation(std::string name);
-
-protected:
 	
+	std::string m_direction;
+protected:
 	InputManager* m_input;
 	Vector2 m_velocity;
 	Animation *m_current_animation;
