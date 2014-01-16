@@ -12,7 +12,8 @@ Car::Car(Sprite* sprite, Collider* collider)
 	, m_velocity(0.0f, 0.0f)
 {
 	m_direction = 0.0f;
-	m_movespeed = rand() %100+500.0f;
+
+	m_movespeed = rand() %50+600.0f;
 
 	if(m_collider->m_position.m_x < 360)
 	{
@@ -29,6 +30,9 @@ GameObject_Type Car::GetType()
 }
 void Car::Update(float deltatime)
 {
+
+	
+
 	m_velocity.m_x = m_movespeed * deltatime * m_direction;
 
 	

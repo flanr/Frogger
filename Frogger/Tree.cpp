@@ -15,10 +15,10 @@ Tree::Tree(Sprite* sprite, Collider* collider)
 	: GameObject(sprite, collider)
 	, m_velocity(0.0f, 0.0f)
 {
-
+	m_movespeed = rand() %50+600.0f;
 
 	m_direction = 0.0f;
-	m_movespeed = rand() %100+500.0f;
+	
 
 	if(m_collider->m_position.m_x < 360)
 	{
@@ -39,8 +39,6 @@ void Tree::Update(float deltatime)
 {
 	m_velocity.m_x = m_movespeed * deltatime * m_direction;
 
-	
-	
 	m_position += m_velocity;
 
 	if(m_position.m_x <-140)
