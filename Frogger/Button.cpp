@@ -23,6 +23,11 @@ void Button::SetButton(int x, int y, int w, int h)
 }
 
 Button::~Button(){}
+void Button::SetX(int x)
+{
+	button.x = x;
+}
+
 int Button::GetX()
 {
 	return button.x;

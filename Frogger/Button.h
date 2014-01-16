@@ -11,6 +11,7 @@ public:
 	~Button();
 	void SetButton(int x, int y, int w, int h);
 	int GetX();
+	void SetX(int x);
 	int GetY();
 	int GetW();
 	int GetH();

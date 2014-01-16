@@ -41,4 +41,6 @@ private:
 	Sprite *backgroundImg;
 	Sprite *plaYImg;
 	Sprite *optionImg;
+	//Remove this
+	int addset;
 };

@@ -17,8 +17,8 @@ StartState::StartState(SDL_Renderer* renderer, InputManager *input, GameObjectMa
 	this->renderer = renderer;
 	m_input = input;
 	m_manager = manager;
-	Start.SetButton(500, 290, 100,100);
-	Options.SetButton(400, 100, 100, 100);
+	Start.SetButton(500,470, 100,100);
+	Options.SetButton(400, 600, 100, 100);
 	// bool MenuStateRunning = false;
 }
 
@@ -102,6 +102,8 @@ bool StartState::Update(float p_deltatime)
 
 void StartState::Draw()
 {
+	Options.SetX((Options.GetX() + 5) % m_engine->GetWidth());
+	Start.SetX((Start.GetX() + 5) % m_engine->GetWidth());
 	m_engine->m_draw_manager->Draw(backgroundImg,0,0);
 	m_engine->m_draw_manager->Draw(plaYImg,Start.GetX(),Start.GetY());
 	m_engine->m_draw_manager->Draw(optionImg,Options.GetX(),Options.GetY());
