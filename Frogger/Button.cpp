@@ -10,10 +10,8 @@ Button::Button()
 
 Button::Button(int x, int y, int w, int h)
 {
-	this->x = x;
-	this->y = y;
-	this->w = w;
-	this->h = h;
+
+	SetButton(x, y, w, h);
 
 }
 void Button::SetButton(int x, int y, int w, int h)
@@ -25,24 +23,29 @@ void Button::SetButton(int x, int y, int w, int h)
 }
 
 Button::~Button(){}
+void Button::SetX(int x)
+{
+	button.x = x;
+}
+
 int Button::GetX()
 {
-	return x;
+	return button.x;
 }
 
 int Button::GetY()
 {
-	return y;
+	return button.y;
 }
 
 int Button::GetW()
 {
-	return w;
+	return button.w;
 }
 
 int Button::GetH()
 {
-	return h;
+	return button.h;
 }
 
 SDL_Rect Button::GetButton()

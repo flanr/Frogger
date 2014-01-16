@@ -83,11 +83,11 @@ bool Engine::Initialize()
 		return false;
 	}
 
-	/*m_sprite_manager = new SpriteManager(m_draw_manager);
+	m_sprite_manager = new SpriteManager(m_draw_manager);
 	if (!m_sprite_manager->Initialize("../data/sprites/"))
 	{
 	return false;
-	}*/
+	}
 	if (m_SoundMgr==nullptr)
 	{
 		m_SoundMgr = new SoundManager();
@@ -141,6 +141,11 @@ void Engine::Run()
 		if (m_input.IsDownOnce(SDLK_b))
 		{
 			m_SoundMgr->PlayPrev();
+		}
+		
+		if (!m_SoundMgr->GetMusicClip()->IsPlaying())
+		{
+			m_SoundMgr->PlayNext();
 		}
 		m_draw_manager->Clear();
 		m_state_manager.Update(m_deltatime);

@@ -9,6 +9,7 @@
 
 class InputManager;
 class Engine;
+class Sprite;
 class StartState : public State
 
 {
@@ -21,17 +22,14 @@ public:
 	std::string GetCurrentState();
 	std::string Next();
 	void HandleInput();
-	bool mouseOver(int x, int y);
+	int mouseOver(int x, int y);
 	void mouseDown(int x, int y);
-	void moveMouse(int x, int y);
 	/**
 	Returns True if p_type == GameState
 	**/
 	bool IsType(const std::string &p_type);
 
 private:
-	bool selected;
-	bool hovered;
 	bool m_done;
 	Button Start;
 	Button Options;
@@ -40,6 +38,9 @@ private:
 	std::string m_state_next;
 	SDL_Renderer* renderer;
 	SDL_Rect startbutton;
-
-
+	Sprite *backgroundImg;
+	Sprite *plaYImg;
+	Sprite *optionImg;
+	//Remove this
+	int addset;
 };
