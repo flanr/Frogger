@@ -55,7 +55,7 @@ void CollisionManager::CheckCollision()
 						//TREE COLLISION
 						if(m_object.at(i)->m_xobject->GetType() == LOG )
 						{
-							
+
 							m_object.at(z)->m_xobject->m_is_on_log = true;
 							m_object.at(z)->m_xobject->SetPosition(m_object.at(i)->m_xobject->GetPosition());
 							return;
@@ -64,13 +64,18 @@ void CollisionManager::CheckCollision()
 						{
 							m_object.at(z)->m_xobject->m_is_on_log = false;
 						}
+						if(m_object.at(z)->m_xobject->m_is_on_log = true && m_object.at(i)->m_xobject->GetType() == GOAL)
+						{
+							m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
+							std::cout << " DU TRAEFFADE MOELET\n";
+						}
 						//WATER AND CAR COLLISION
 						if((m_object.at(i)->m_xobject->GetType() == WATER && m_object.at(z)->m_xobject->m_is_on_log == false)
 							|| m_object.at(i)->m_xobject->GetType() == CAR)
 						{
 							m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
 						}
-								//				m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
+						//				m_object.at(z)->NotifyParent(m_object.at(i)->m_xobject);
 
 						printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
 					}

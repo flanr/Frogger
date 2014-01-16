@@ -99,6 +99,7 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GlobalGameConfig.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelBackground.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlobalGameConfig.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="StartState.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="Water.h" />

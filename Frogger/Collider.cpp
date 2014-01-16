@@ -20,6 +20,7 @@ Collider::~Collider()
 }
 void Collider::NotifyParent(GameObject* go1)
 {
+	
 	go1->SetPosition(go1->GetStartPosition());
 }
 

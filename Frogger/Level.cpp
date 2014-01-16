@@ -15,6 +15,7 @@
 #include "InputManager.h"
 #include "Car.h"
 #include "Tree.h"
+#include "Goal.h"
 
 Level::Level()
 {
@@ -28,7 +29,9 @@ Level::Level()
 	m_water = nullptr;
 	m_car = nullptr;
 	m_tree = nullptr;
-	
+	m_goal = nullptr;
+
+	m_goal_start_position = Vector2(0.0f, 0.0f);
 	m_player_start_position = Vector2(0.0f, 0.0f);
 	m_water_start_position = Vector2(0.0f, 0.0f);
 	m_car_start_position = Vector2(0.0f, 0.0f);
@@ -166,6 +169,22 @@ bool Level::Load(const std::string &p_filename
 				m_tree->SetStartPosition(m_tree_start_position); 
 
 				m_manager->AttachObject(m_tree);	
+				x+= m_width;
+				continue;
+
+			}else if(row[i] == '5') //GOAL
+			{
+
+				m_goal_start_position.m_x = x+1;
+				m_goal_start_position.m_y = y+1;
+
+				m_goal = new Goal(m_sprite = p_sprite_manager->Load("hero.png", 0, 0, 70, 70)
+					, m_collmgr->CreateCollider(m_goal_start_position, Vector2(68.0f, 60.0f)));
+
+				m_goal->SetPosition(m_goal_start_position);
+				m_goal->SetStartPosition(m_goal_start_position); 
+
+				m_manager->AttachObject(m_goal);
 				x+= m_width;
 				continue;
 

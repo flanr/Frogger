@@ -18,6 +18,7 @@ class PlayerObject;
 class Sprite;
 class Car;
 class Tree;
+class Goal;
 
 class Level
 {
@@ -46,11 +47,14 @@ protected:
 
 	CollisionManager *m_collmgr;
 	GameObjectManager *gom;
+
 	Vector2 m_player_start_position;
 	Vector2 m_water_start_position;
 	Vector2 m_car_start_position;
 	Vector2 m_tree_start_position;
+	Vector2 m_goal_start_position;
 
+	Goal *m_goal;
 	Tree *m_tree;
 	Car *m_car;
 	PlayerObject* m_player;
