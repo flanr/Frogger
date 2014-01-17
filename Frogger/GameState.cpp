@@ -17,7 +17,6 @@
 #include "Collider.h"
 
 
-
 GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectManager *manager)
 {
 	this->renderer = renderer;
@@ -48,7 +47,6 @@ bool GameState::Enter(Engine* engine)
 	{
 		m_collmgr = new CollisionManager;
 	}
-
 
 	// GameStateRunning = true:
 
@@ -106,9 +104,6 @@ bool GameState::Update(float p_deltatime)
 
 	m_manager->Update(p_deltatime);
 	m_collmgr->CheckCollision();
-
-
-
 	HandleInput();
 
 
@@ -131,7 +126,6 @@ void GameState::HandleInput()
 
 void GameState::Draw()
 {
-
 	m_draw_manager->Clear();
 	m_levelbackground->Draw(m_draw_manager);
 	m_level->Draw(m_draw_manager);

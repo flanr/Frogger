@@ -38,12 +38,12 @@ void MusicClip::Pause()
 	{
 		return;
 	}
-	if (Mix_Paused(m_Channel))
-	{
-		Mix_Resume(m_Channel);
+	if (Mix_PausedMusic())
+	{ 
+		Mix_ResumeMusic();
 	}else
 	{
-		Mix_Pause(m_Channel);
+		Mix_PauseMusic();
 	}
 }
 
@@ -53,8 +53,9 @@ void MusicClip::Stop()
 	{
 		return;
 	}
-	Mix_HaltChannel(m_Channel);
+	Mix_HaltMusic();
 	m_Channel = -1;
+	
 }
 
 void MusicClip::Volume()

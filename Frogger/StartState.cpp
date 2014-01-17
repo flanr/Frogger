@@ -102,8 +102,8 @@ bool StartState::Update(float p_deltatime)
 
 void StartState::Draw()
 {
-	Options.SetX((Options.GetX() + 5) % m_engine->GetWidth());
-	Start.SetX((Start.GetX() + 5) % m_engine->GetWidth());
+	//Options.SetX((Options.GetX() + 5) % m_engine->GetWidth());
+	//Start.SetX((Start.GetX() + 5) % m_engine->GetWidth());
 	m_engine->m_draw_manager->Draw(backgroundImg,0,0);
 	m_engine->m_draw_manager->Draw(plaYImg,Start.GetX(),Start.GetY());
 	m_engine->m_draw_manager->Draw(optionImg,Options.GetX(),Options.GetY());
