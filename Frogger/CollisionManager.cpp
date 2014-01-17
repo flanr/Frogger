@@ -25,7 +25,7 @@ void CollisionManager::CheckCollision()
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// SÅ MINA COLLIDERS SKA JÄMFÖRAS MED VARANDRA OCH SE OM DE COLLIDERAR, OM DET SKAPAS ETT OFFSET VÄRDE MÅSTE DE SKICKAS TILL DIN PARENT(GAMEOBJECT)///
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	Vector2 wall_collision(720.0f, 720.0f);
 	Vector2 offset(0.0, 0.0);
 	int count = 0;
 	for(auto i = 0UL; i < m_object.size()-1; i++) {
@@ -33,11 +33,21 @@ void CollisionManager::CheckCollision()
 		{
 
 			Vector2 off(0.0, 0.0);
+
+			if(m_object.at(z)->m_xobject->GetType() == PLAYER)
+			{
+				if(m_object.at(z)->m_position.m_x > 720 || m_object.at(z)->m_position.m_y > 720 
+					|| m_object.at(z)->m_position.m_x < 0 || m_object.at(z)->m_position.m_y < 0)
+				{
+					m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
+				}
+			}
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//               object[0] hämtar collider objektet från gameobjectet(collider)                                   //////
 			//och kollar om den överlappar med ett annat gameobject i samma lista(som den hämtar collider från dess parameter)//////
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			if(m_object.at(i)->Overlap(*m_object.at(z), off)) { 
+			if(m_object.at(i)->Overlap(*m_object.at(z), off)) 
+			{ 
 				offset += off;
 				count++;
 
@@ -49,7 +59,6 @@ void CollisionManager::CheckCollision()
 
 				if(m_object.at(z)->m_xobject->GetType() == PLAYER)
 				{
-
 					if(off.m_x < 1.0 || off.m_x > 1.0 || off.m_y > 1.0 ||off.m_y < 1.0 )
 					{
 						//TREE COLLISION
@@ -67,6 +76,8 @@ void CollisionManager::CheckCollision()
 						if(m_object.at(z)->m_xobject->m_is_on_log = true && m_object.at(i)->m_xobject->GetType() == GOAL)
 						{
 							m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
+							//m_object.at(i) DETTA ÄR COLLIDER TILL MÅLET DU TRÄFFAR
+							//m_object.at(i)->m_xobject 
 							std::cout << " DU TRAEFFADE MOELET\n";
 						}
 						//WATER AND CAR COLLISION
@@ -114,56 +125,3 @@ void CollisionManager::DestroyCollider(Collider *collider)
 		}
 	}
 }
-
-/*
-bool CollisionManager::IfCollided()
-{  
-
-Vector2 offset;
-int count = 0;
-for(auto i = 0UL; i < c_object.size()-1; i++) {
-for(int z = i+1; z < c_object.size(); z++)
-{
-if(c_object.at(i)->HasCollider()) {
-Vector2 off;
-if(c_object.at(i)->GetCollider()->Overlap(*c_object.at(z)->GetCollider(), off)) { //object[0] hämtar collider objektet från gameobjectet(collider)
-//och kollar om den överlappar med ett annat gameobject i samma lista(som den hämtar collider från dess parameter)
-offset += off;
-count++;
-};
-};
-};
-};
-if(count > 0) {
-offset /= (float)count;
-printf("%2d %f %f\n", count, offset.m_x, offset.m_y);
-offset.m_x=floorf(offset.m_x);
-offset.m_y=floorf(offset.m_y);
-return true;
-};
-return false;
-}
-
-/*Vector2 offset;
-if(m_level->CheckCollision(m_player, offset)) {
-m_player->SetPosition(m_player->GetCollider()->m_position);
-
-if(offset.m_y < 0.0f) {
-printf("--- Y \n");
-}
-else if(offset.m_y > 0.0f) {
-printf("+++ Y\n");
-};
-if(offset.m_x > 0.0f) {
-printf("+++ X\n");
-}
-else if(offset.m_x < 0.0f) {
-printf("--- X\n");
-};
-};}
-
-void CollisionManager::HasCollided(GameObject *Object1, GameObject *Object2)
-{
-
-}
-*/
