@@ -12,15 +12,13 @@ Collider::Collider()
 	: m_position(0.0f, 0.0f)
 	, m_extension(0.0f, 0.0f)
 {
-
 }
 Collider::~Collider()
 {
-
 }
 void Collider::NotifyParent(GameObject* go1)
 {
-	
+
 	go1->SetPosition(go1->GetStartPosition());
 }
 
@@ -28,7 +26,6 @@ Collider::Collider(const Vector2 &p_position, const Vector2 &p_extension)
 	: m_position(p_position)
 	, m_extension(p_extension)
 {
-
 }
 
 bool Collider::Overlap(const Collider &p_other, Vector2 &p_offset)

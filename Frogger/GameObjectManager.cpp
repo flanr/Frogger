@@ -43,13 +43,13 @@ void GameObjectManager::AttachObject(GameObject *object)
 //detach
 void GameObjectManager::DetachObject(GameObject *object)
 {
-	for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
+	for (unsigned int i=0; i<m_gameobject.size(); i++)
 	{
-		if (*it == object)
+		if (m_gameobject[i] == object)
 		{
-			delete *it;
-			*it = nullptr;
-			m_gameobject.erase(it);
+			delete m_gameobject[i];
+			m_gameobject[i] = nullptr;
+			m_gameobject.erase(m_gameobject.begin()+i);
 		}
 	}
 }

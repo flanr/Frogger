@@ -44,13 +44,6 @@ bool GameState::Enter(Engine* engine)
 
 	std::cout << "GameState::Enter" << std::endl;
 
-	if (m_collmgr ==nullptr)
-	{
-		m_collmgr = new CollisionManager;
-	}
-
-
-	// GameStateRunning = true:
 
 
 	if (m_manager == nullptr)
@@ -58,6 +51,15 @@ bool GameState::Enter(Engine* engine)
 		m_manager = new GameObjectManager;
 	}
 
+
+
+	if (m_collmgr ==nullptr)
+	{
+		m_collmgr = new CollisionManager(m_manager);
+	}
+
+
+	// GameStateRunning = true:
 
 	m_draw_manager = engine->m_draw_manager;
 
@@ -89,7 +91,7 @@ bool GameState::Enter(Engine* engine)
 		m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
 	}
 
-
+	srand( SDL_GetTicks() );
 
 	std::cout << "GameState now running" << std::endl;
 	return false;
