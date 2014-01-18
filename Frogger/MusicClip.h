@@ -15,6 +15,7 @@ public:
 	void Stop();
 	void Volume();
 	bool IsPlaying();
+	bool isStopped;
 
 private:
 	Mix_Music* m_Clip;

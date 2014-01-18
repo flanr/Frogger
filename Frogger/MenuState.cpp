@@ -17,10 +17,10 @@ MenuState::MenuState(SDL_Renderer* renderer,InputManager *input, Engine* engine)
 	int menuX = engine->GetWidth()/2;
 	int menuY = engine->GetHeight()/2;
 	menu = new Menu(engine->GetWidth()/2-(menuX/2), engine->GetWidth()/2-(menuY/2), menuX, menuY );
-	Play_btn.SetButton(0,0,100,100);
-	Next_btn.SetButton(0,100,100,100);
-	Prev_btn.SetButton(0,200,100,100);
-	Stop_btn.SetButton(0,300,100,100);
+	Play_btn.SetButton(0,0,40,20);
+	Next_btn.SetButton(0,100,20,20);
+	Prev_btn.SetButton(0,200,20,20);
+	Stop_btn.SetButton(0,300,20,20);
 	StartState_btn.SetButton(0,400,100,100);
 	GameState_btn.SetButton(0,500,100,100);
 
@@ -32,10 +32,10 @@ bool MenuState::Enter(Engine* engine)
 
 	m_engine = engine;
 
-	Play_sprite = engine->m_sprite_manager->Load("playpause.png",0,0,100,100);
-	Next_sprite = engine->m_sprite_manager->Load("next.png",0,0,100,100);
-	Prev_sprite = engine->m_sprite_manager->Load("prev.png",0,0,100,100);
-	Stop_sprite = engine->m_sprite_manager->Load("stop.png",0,0,100,100);
+	Play_sprite = engine->m_sprite_manager->Load("mjusick.png",0,0,40,20);
+	Next_sprite = engine->m_sprite_manager->Load("mjusick.png",60,0,20,20);
+	Prev_sprite = engine->m_sprite_manager->Load("mjusick.png",80,0,20,20);
+	Stop_sprite = engine->m_sprite_manager->Load("mjusick.png",40,0,20,20);
 	StartState_sprite = engine->m_sprite_manager->Load("menu.png",0,0,100,100);
 	GameState_sprite = engine->m_sprite_manager->Load("game.png",0,0,100,100);
 

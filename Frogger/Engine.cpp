@@ -143,7 +143,7 @@ void Engine::Run()
 			m_SoundMgr->PlayPrev();
 		}
 		
-		if (!m_SoundMgr->GetMusicClip()->IsPlaying())
+		if (!m_SoundMgr->GetMusicClip()->isStopped && !m_SoundMgr->GetMusicClip()->IsPlaying())
 		{
 			m_SoundMgr->PlayNext();
 		}

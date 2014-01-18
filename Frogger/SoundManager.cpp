@@ -121,12 +121,14 @@ void SoundManager::PlayNext()
 }
 void SoundManager::PlayPrev()
 {
+	
 	m_MusicClips[m_current]->Stop();
 	m_current = (m_current - 1) % m_MusicClips.size();
 	m_MusicClips[m_current]->Play();
 
 
 }
+
 
 MusicClip* SoundManager::GetMusicClip()
 {
