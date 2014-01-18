@@ -29,19 +29,24 @@ void CollisionManager::CheckCollision()
 	Vector2 wall_collision(720.0f, 720.0f);
 	Vector2 offset(0.0, 0.0);
 	int count = 0;
+	int instance = 0;
 
 	for(auto i = 0UL; i < m_object.size()-1; i++) {
 		for(auto z = i+1; z < m_object.size(); z++)
 		{
 			Vector2 off(0.0, 0.0);
-
+			
 			if(m_object.at(z)->m_xobject->GetType() == PLAYER) // WALL "COLLISION"
 			{
+				instance = z;
 				if(m_object.at(z)->m_position.m_x > 720 || m_object.at(z)->m_position.m_y > 720 
 					|| m_object.at(z)->m_position.m_x < 0 || m_object.at(z)->m_position.m_y < 0)
 				{
 					m_object.at(z)->NotifyParent(m_object.at(z)->m_xobject);
+		
+					{
 
+					}
 				}
 			}
 
