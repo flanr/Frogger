@@ -50,7 +50,6 @@ bool GameState::Enter(Engine* engine)
 		m_manager = new GameObjectManager;
 	}
 
-
 	// GameStateRunning = true:
 
 
