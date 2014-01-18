@@ -21,6 +21,8 @@ public:
 	SoundClip* CreateSound(std::string p_Path);
 	void PlayNext();
 	void PlayPrev();
+	void PlayPause();
+	void Stop();
 	MusicClip* GetMusicClip();
 private:
 	int m_current;

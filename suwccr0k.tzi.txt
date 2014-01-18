@@ -1,0 +1,41 @@
+﻿Merge branch 'master' of https://github.com/flanr/Frogger
+
+Conflicts:
+	Frogger/Configuration
+	Frogger/Configuration.backup
+	Frogger/GameState.cpp
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   Frogger/GameState.cpp
+#	modified:   Frogger/MenuState.cpp
+#	modified:   Frogger/MenuState.h
+#	modified:   Frogger/MusicClip.cpp
+#	modified:   Frogger/SoundManager.cpp
+#	modified:   Frogger/SoundManager.h
+#	modified:   Frogger/StartState.cpp
+#	modified:   data/levels/level.txt
+#	new file:   data/sprites/game.png
+#	new file:   data/sprites/menu.png
+#	new file:   data/sprites/next.png
+#	new file:   data/sprites/playpause.png
+#	new file:   data/sprites/prev.png
+#	new file:   data/sprites/stop.png
+#
+
