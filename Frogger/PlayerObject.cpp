@@ -9,6 +9,8 @@
 #include "Collider.h"
 #include <iostream>
 #include "Animation.h"
+#include "SoundManager.h"
+#include "SoundClip.h"
 
 PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* collider)
 	: GameObject(sprite, collider)
@@ -17,6 +19,8 @@ PlayerObject::PlayerObject(InputManager *control, Sprite* sprite, Collider* coll
 { 
 	m_current_animation = nullptr;
 	m_direction = "up";
+	sound_manager = new SoundManager();
+	sound_clip = sound_manager->CreateSound("../data/match.wav");
 }
 
 GameObject_Type PlayerObject::GetType()
@@ -32,6 +36,7 @@ void PlayerObject::Update(float deltatime)
 
 	if(m_input->IsDownOnce(SDLK_a))
 	{
+		sound_clip->Play();
 		m_direction = "left";
 		SetAnimation("Player_Move_Left");
 		m_velocity.m_x -= movespeed;
@@ -39,6 +44,7 @@ void PlayerObject::Update(float deltatime)
 	}
 	if(m_input->IsDownOnce(SDLK_d))
 	{
+		sound_clip->Play();
 		m_direction = "right";
 		SetAnimation("Player_Move_Right");
 		m_velocity.m_x += movespeed;
@@ -46,6 +52,7 @@ void PlayerObject::Update(float deltatime)
 	}
 	if(m_input->IsDownOnce(SDLK_w))
 	{
+		sound_clip->Play();
 		m_direction = "up";
 		SetAnimation("Player_Move");
 		m_velocity.m_y -= movespeed;
@@ -53,6 +60,7 @@ void PlayerObject::Update(float deltatime)
 	}
 	if(m_input->IsDownOnce(SDLK_s))
 	{	
+		sound_clip->Play();
 		m_direction = "down";
 		SetAnimation("Player_Move_Down");
 		m_velocity.m_y += movespeed;

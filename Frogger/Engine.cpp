@@ -62,9 +62,10 @@ bool Engine::Initialize()
 	}
 	if(!Config->get("Music Vol")){
 		Config->set("Music Vol", "50", strlen("50"));
-	}
+	}else{
 	setMusicVolume(atoi(Config->get("Music Vol")->getData()));
-
+	}
+	
 	// Start SDL
 
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -92,10 +93,10 @@ bool Engine::Initialize()
 	{
 		m_SoundMgr = new SoundManager();
 
-		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\03.Everyday(Netsky remix).flac");
-		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\01StereoLove(Original Mix).flac");
+		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\03.Everyday(Netsky remix).flac");		
 		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\groovin.mp3");
 		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\Starchild.mp3");
+		m_MusicClip = m_SoundMgr->CreateMusic((std::string)"..\\data\\ra3.mp3");
 		m_MusicClip->Play();
 
 	}

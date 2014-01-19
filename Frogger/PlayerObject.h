@@ -11,6 +11,8 @@ class Sprite;
 class Collider;
 class Tree;
 class Animation;
+class SoundClip;
+class SoundManager;
 
 class PlayerObject : public GameObject {
 public:
@@ -24,6 +26,8 @@ public:
 	
 	std::string m_direction;
 protected:
+	SoundManager* sound_manager;
+	SoundClip* sound_clip;
 	InputManager* m_input;
 	Vector2 m_velocity;
 	Animation *m_current_animation;

@@ -61,10 +61,8 @@ void GameObjectManager::DetachObject()
 		
 		delete (*it)->GetCollider();
 		delete *it;
-		auto old = it;
-
-		it++;
-		//m_gameobject.erase(old);		
+	
+		it++;	
 	}
 
 }

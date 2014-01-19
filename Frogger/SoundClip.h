@@ -14,6 +14,7 @@ public:
 	void Play();
 	void Pause();
 	void Stop();
+	void Volume();
 
 private:
 	Mix_Chunk* m_Clip;

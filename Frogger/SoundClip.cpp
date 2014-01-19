@@ -1,6 +1,7 @@
 // SoundClip.cpp
 
 #include "SoundClip.h"
+#include "GlobalGameConfig.h"
 
 SoundClip::SoundClip()
 {
