@@ -50,7 +50,7 @@ void GameObjectManager::DetachObject(GameObject *object)
 		{
 			if(obj != nullptr)
 			{
-				//delete (*it)->GetCollider();
+				delete (*it)->GetCollider();
 				
 				delete *it;
 				*it = nullptr;
