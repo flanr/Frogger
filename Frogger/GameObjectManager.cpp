@@ -43,13 +43,22 @@ void GameObjectManager::AttachObject(GameObject *object)
 //detach
 void GameObjectManager::DetachObject(GameObject *object)
 {
-	for (unsigned int i=0; i<m_gameobject.size(); i++)
+	for (auto it = m_gameobject.begin();it != m_gameobject.end();)
 	{
-		if (m_gameobject[i] == object)
+		GameObject *obj = *it;
+		if (obj = object)
 		{
-			delete m_gameobject[i];
-			m_gameobject[i] = nullptr;
-			m_gameobject.erase(m_gameobject.begin()+i);
+			if(obj != nullptr)
+			{
+				delete (*it)->GetCollider();
+				
+				delete *it;
+				*it = nullptr;
+			//	auto old = it;
+				//m_gameobject.pop_back();
+			}
+
+			it++;
 		}
 	}
 }
@@ -58,7 +67,7 @@ void GameObjectManager::DetachObject()
 {
 	for( auto it = m_gameobject.begin();it != m_gameobject.end(); ) 
 	{	
-		
+
 		delete (*it)->GetCollider();
 		delete *it;
 	
