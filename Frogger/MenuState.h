@@ -52,5 +52,5 @@ private:
 	Sprite* StartState_sprite;
 	Button GameState_btn;
 	Sprite* GameState_sprite;
-
+	Sprite* bng;
 };

@@ -16,11 +16,12 @@ MenuState::MenuState(SDL_Renderer* renderer,InputManager *input, Engine* engine)
 	m_input = input;
 	int menuX = engine->GetWidth()/2;
 	int menuY = engine->GetHeight()/2;
+	bng = nullptr;
 	menu = new Menu(engine->GetWidth()/2-(menuX/2), engine->GetWidth()/2-(menuY/2), menuX, menuY );
-	Play_btn.SetButton(0,0,40,20);
-	Next_btn.SetButton(0,100,20,20);
-	Prev_btn.SetButton(0,200,20,20);
-	Stop_btn.SetButton(0,300,20,20);
+	Play_btn.SetButton(280,470,40,20);
+	Next_btn.SetButton(350,470,20,20);
+	Prev_btn.SetButton(450,470,20,20);
+	Stop_btn.SetButton(400,470,20,20);
 	StartState_btn.SetButton(0,400,100,100);
 	GameState_btn.SetButton(0,500,100,100);
 
@@ -38,7 +39,7 @@ bool MenuState::Enter(Engine* engine)
 	Stop_sprite = engine->m_sprite_manager->Load("mjusick.png",40,0,20,20);
 	StartState_sprite = engine->m_sprite_manager->Load("menu.png",0,0,100,100);
 	GameState_sprite = engine->m_sprite_manager->Load("game.png",0,0,100,100);
-
+	bng = engine->m_sprite_manager->Load("Froggerbg.png",0,0,720,720);
 	m_Current_State = "MenuState";
 	// MenuStateRunning = true:
 	std::cout << "MenuState now running" << std::endl;
@@ -73,7 +74,7 @@ bool MenuState::Update(float p_deltatime)
 
 void MenuState::HandleInput()
 {
-	if (m_input->IsDown(SDLK_k))
+	if (m_input->IsDownOnce(SDLK_k))
 	{
 		m_engine->m_state_manager.SetState("GameState");
 	}
@@ -152,6 +153,7 @@ void MenuState::mouseDown(int x, int y)
 
 void MenuState::Draw()
 {
+	m_engine->m_draw_manager->Draw(bng,0,0);
 	menu->Draw(renderer);
 	//	m_engine->m_draw_manager->Draw(backgroundImg,0,0);
 	m_engine->m_draw_manager->Draw(Play_sprite,Play_btn.GetX(),Play_btn.GetY());

@@ -117,7 +117,7 @@ bool GameState::Update(float p_deltatime)
 }
 void GameState::HandleInput()
 {
-	if (m_input->IsDown(SDLK_k))
+	if (m_input->IsDownOnce(SDLK_k))
 	{
 		m_engine->m_state_manager.SetState("MenuState");
 	}

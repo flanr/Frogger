@@ -69,8 +69,8 @@ void Menu::Draw(SDL_Renderer* renderer)
 {
 	// Draw Background Box
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderFillRect(renderer, &bgrect);
+	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	//SDL_RenderFillRect(renderer, &bgrect);
 	//
 	for(Slider* s : sliders)
 	{
