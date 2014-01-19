@@ -57,13 +57,6 @@ void PlayerObject::Update(float deltatime)
 		SetAnimation("Player_Move_Down");
 		m_velocity.m_y += movespeed;
 	}
-
-	m_position += m_velocity;
-
-	if(HasCollider()) {
-		m_collider->m_position = m_position;
-	};
-
 	if(m_input->IsUp(SDLK_a) && m_input->IsUp(SDLK_d) && m_input->IsUp(SDLK_w) && m_input->IsUp(SDLK_s))
 	{
 		if(m_direction == "up")
@@ -75,6 +68,12 @@ void PlayerObject::Update(float deltatime)
 		else if(m_direction == "right")
 		{ SetAnimation("Player_Moving_Still_Right"); }
 	}
+
+	m_position += m_velocity;
+
+	if(HasCollider()) {
+		m_collider->m_position = m_position;
+	};
 }
 
 void PlayerObject::AddAnimation(const std::string &name, Animation *sprite)

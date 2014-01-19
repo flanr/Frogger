@@ -45,7 +45,8 @@ bool Level::Load(const std::string &p_filename
 				 , CollisionManager *collmgr
 				 , InputManager *m_input)
 {
-
+	string cars[4] = {"redleft.png", "orangeright.png", "purpleleft.png", "blueright.png"};
+	int name = 0;
 	gom = m_manager;
 	m_collmgr = collmgr;
 
@@ -160,14 +161,16 @@ bool Level::Load(const std::string &p_filename
 				m_car_start_position.m_x = x+1;
 				m_car_start_position.m_y = y+1;
 
-				m_car = new Car(m_sprite = p_sprite_manager->Load("Car.png", 0, 0, 70, 70)
+				m_car = new Car(m_sprite = p_sprite_manager->Load(cars[name], 0, 0, 70, 70)
 					, m_collmgr->CreateCollider(m_car_start_position, Vector2(68.0f, 60.0f)));
 
 				m_car->SetPosition(m_car_start_position);
 				m_car->SetStartPosition(m_car_start_position); 
 
 				m_manager->AttachObject(m_car);
+
 				x+= m_width;
+				name++;
 				continue;
 
 			}else if(row[i] == '4')//LOG
