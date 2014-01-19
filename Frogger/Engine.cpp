@@ -178,6 +178,13 @@ void Engine::Cleanup()
 		delete m_draw_manager;
 		m_draw_manager=nullptr;
 	}
+	if (gameobjectmanager != nullptr)
+	{
+		gameobjectmanager->DetachObject();
+		delete gameobjectmanager;
+		gameobjectmanager = nullptr;
+	}
+
 
 	char bacon[1024];
 	sprintf(bacon, "%d", getMusicVolume());

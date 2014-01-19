@@ -53,16 +53,18 @@ void GameObjectManager::DetachObject(GameObject *object)
 		}
 	}
 }
+
 void GameObjectManager::DetachObject()
 {
-	for( auto it = m_gameobject.begin();it != m_gameobject.end(); it++) 
-	{			
+	for( auto it = m_gameobject.begin();it != m_gameobject.end(); ) 
+	{	
+		
 		delete (*it)->GetCollider();
 		delete *it;
-		*it = nullptr;
-		m_gameobject.erase(it);
+		auto old = it;
 
-
+		it++;
+		//m_gameobject.erase(old);		
 	}
 
 }

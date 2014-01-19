@@ -27,6 +27,7 @@ GameState::GameState(SDL_Renderer* renderer, InputManager *input, GameObjectMana
 	m_collider = nullptr;
 	m_sprite_manager = nullptr;
 	m_sprite = nullptr;
+	m_levelbackground = nullptr;
 	m_manager = manager;
 
 	// bool GameStateRunning = false;
@@ -53,7 +54,7 @@ bool GameState::Enter(Engine* engine)
 	// GameStateRunning = true:
 
 
-	if (m_collmgr ==nullptr)
+	if (m_collmgr == nullptr)
 	{
 		m_collmgr = new CollisionManager(m_manager);
 	}
@@ -85,7 +86,7 @@ bool GameState::Enter(Engine* engine)
 		m_level = new Level;
 		m_level->Load("../data/levels/level.txt",m_sprite_manager, m_manager, m_collmgr, m_input);
 	}
-	if (m_levelbackground)
+	if (m_levelbackground == nullptr)
 	{
 		m_levelbackground = new LevelBackground;
 		m_levelbackground->Load("../data/levels/levelbackground.txt",m_sprite_manager);
@@ -116,7 +117,7 @@ bool GameState::Update(float p_deltatime)
 }
 void GameState::HandleInput()
 {
-	if (m_input->IsDownOnce(SDLK_k))
+	if (m_input->IsDown(SDLK_k))
 	{
 		m_engine->m_state_manager.SetState("MenuState");
 	}
